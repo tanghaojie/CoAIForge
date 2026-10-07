@@ -10,7 +10,7 @@ owner: project maintainers
 
 ## 目标与当前状态
 
-CoAIForge 是独立协作启动模板维护仓库。P1 技术实施已完成并通过 Windows 本地及 Windows/Linux 远端 CI 独立验证，已推送到 origin/master；前端人类验收尚待执行。来源方案及确认选择来自 Cyber-Sight 的 P0 设计和引用会话；不迁移来源业务或历史。
+CoAIForge 是独立协作启动模板维护仓库。P1 已完成：Windows 本地及 Windows/Linux 远端 CI 独立验证通过，已推送到 origin/master，维护者于 2026-10-07 明确确认前端人工验收通过。来源方案及确认选择来自 Cyber-Sight 的 P0 设计和引用会话；不迁移来源业务或历史。
 
 ## 组合边界
 

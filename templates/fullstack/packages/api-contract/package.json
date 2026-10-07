@@ -1,0 +1,29 @@
+{
+  "name": "@{{PROJECT_NAME}}/api-contract",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "exports": {
+    "./health": {
+      "import": {
+        "types": "./dist/esm/modules/health/health.schema.d.ts",
+        "default": "./dist/esm/modules/health/health.schema.js"
+      },
+      "require": {
+        "types": "./dist/cjs/modules/health/health.schema.d.ts",
+        "default": "./dist/cjs/modules/health/health.schema.js"
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsc && tsc -p tsconfig.esm.json && node scripts/finalize.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "pnpm build && node --test test/*.test.cjs"
+  },
+  "dependencies": {
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}

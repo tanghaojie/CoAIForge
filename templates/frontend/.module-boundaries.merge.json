@@ -1,0 +1,7 @@
+{
+  "assembly": [
+    "apps/frontend/src/main.ts",
+    "apps/frontend/src/App.vue",
+    "apps/frontend/src/env.d.ts"
+  ]
+}

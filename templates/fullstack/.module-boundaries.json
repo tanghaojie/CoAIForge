@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "assembly": [
+    "apps/frontend/src/main.ts",
+    "apps/frontend/src/App.vue",
+    "apps/frontend/src/env.d.ts",
+    "apps/backend/src/server.ts",
+    "apps/backend/src/app.ts",
+    "apps/backend/src/app.module.ts"
+  ],
+  "modules": [
+    {
+      "name": "health",
+      "design": "docs/design/modules/health.md",
+      "publicFiles": [
+        "apps/frontend/src/modules/health/health.api.ts",
+        "apps/backend/src/modules/health/health.module.ts",
+        "packages/api-contract/src/modules/health/health.schema.ts"
+      ],
+      "dependencies": []
+    }
+  ]
+}

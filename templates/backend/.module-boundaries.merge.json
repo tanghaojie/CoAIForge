@@ -1,0 +1,7 @@
+{
+  "assembly": [
+    "apps/backend/src/server.ts",
+    "apps/backend/src/app.ts",
+    "apps/backend/src/app.module.ts"
+  ]
+}

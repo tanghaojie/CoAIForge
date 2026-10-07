@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "dev:backend": "pnpm --filter @{{PROJECT_NAME}}/backend dev",
+    "start:backend": "pnpm --filter @{{PROJECT_NAME}}/backend start"
+  }
+}

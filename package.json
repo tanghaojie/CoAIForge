@@ -1,0 +1,40 @@
+{
+  "name": "coaiforge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "packageManager": "pnpm@11.13.1",
+  "engines": {
+    "node": ">=24.18.0 <25",
+    "pnpm": "11.13.1"
+  },
+  "scripts": {
+    "prepare": "node scripts/git/install-hooks.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "test": "node --test scripts/**/*.test.mjs",
+    "docs:check": "node scripts/docs/check.mjs",
+    "modules:check": "node scripts/architecture/check-modules.mjs",
+    "docs:archive:check": "node scripts/docs/archive-audit.mjs",
+    "docs:archive:check:ci": "node scripts/docs/archive-audit.mjs --ci",
+    "docs:archive:check:bootstrap": "node scripts/docs/archive-audit.mjs --bootstrap",
+    "docs:archive:init": "node scripts/docs/archive-audit.mjs --init",
+    "docs:archive:complete": "node scripts/docs/archive-audit.mjs --complete",
+    "commits:check": "node scripts/git/check-range.mjs",
+    "template:compose": "node scripts/templates/compose.mjs",
+    "templates:verify": "node scripts/templates/verify.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/node": "24.19.1",
+    "eslint": "10.8.0",
+    "eslint-plugin-vue": "10.10.0",
+    "prettier": "3.9.6",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.65.0",
+    "vue-eslint-parser": "10.4.1",
+    "yaml": "2.9.1"
+  }
+}

@@ -1,0 +1,7 @@
+packages: []
+
+allowBuilds:
+  '@nestjs/core': false
+  esbuild: true
+
+minimumReleaseAge: 1440

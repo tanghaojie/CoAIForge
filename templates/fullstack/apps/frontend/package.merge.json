@@ -1,0 +1,3 @@
+{
+  "dependencies": { "@{{PROJECT_NAME}}/api-contract": "workspace:*" }
+}

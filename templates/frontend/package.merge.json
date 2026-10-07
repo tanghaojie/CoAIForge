@@ -1,0 +1,3 @@
+{
+  "scripts": { "dev:frontend": "pnpm --filter @{{PROJECT_NAME}}/frontend dev" }
+}

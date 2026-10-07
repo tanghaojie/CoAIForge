@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "shared": [
+    "AGENTS.md",
+    "LICENSE",
+    ".prettierrc.json",
+    ".prettierignore",
+    ".gitignore",
+    ".npmrc",
+    ".node-version",
+    ".gitattributes",
+    "eslint.config.mjs",
+    ".githooks",
+    "scripts/lib",
+    "scripts/docs",
+    "scripts/git",
+    "scripts/architecture",
+    "docs/templates",
+    "docs/design/module-boundaries.md",
+    "docs/design/documentation-governance.md",
+    "docs/design/developer-workflow.md",
+    "docs/design/validation.md",
+    "docs/guides/getting-started.md",
+    "docs/reference/dependencies.md",
+    "docs/archive/archive-policy.json"
+  ],
+  "presets": {
+    "frontend": {
+      "layers": ["base", "frontend"],
+      "workspaces": ["apps/frontend"],
+      "overrides": []
+    },
+    "backend": { "layers": ["base", "backend"], "workspaces": ["apps/backend"], "overrides": [] },
+    "fullstack": {
+      "layers": ["base", "frontend", "backend", "fullstack"],
+      "workspaces": ["apps/frontend", "apps/backend", "packages/api-contract"],
+      "overrides": [
+        "apps/frontend/src/App.vue",
+        "apps/frontend/vite.config.mts",
+        "apps/backend/src/app.module.ts",
+        "apps/backend/test/lifecycle.test.cjs",
+        ".module-boundaries.json",
+        "docs/reference/README.md",
+        "docs/design/README.md"
+      ]
+    }
+  }
+}

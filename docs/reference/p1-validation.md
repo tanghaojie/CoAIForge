@@ -12,7 +12,8 @@
 | 契约产物测试                  | 不存在           | 不存在           | 2/2              |
 | 首提交前 bootstrap            | 通过，明确未登记 | 通过，明确未登记 | 通过，明确未登记 |
 | 前端人类验收                  | 待验收           | 不适用           | 待验收           |
-| Linux 实测                    | 未执行           | 未执行           | 未执行           |
+| Linux CI 实测                 | 通过             | 通过             | 通过             |
+| Windows CI 实测               | 通过             | 通过             | 通过             |
 
 根治理与组合测试 22/22。后端测试实际监听随机本地端口、请求 HTTP 并关闭；全栈还验证时间格式、404/500 响应、400/401/503 的业务映射。契约测试实际 ESM import 和 CommonJS require 及非法字段/时间/status。没有启动来源应用或外部数据库，没有运行前端单元、组件、E2E 或浏览器自动化。
 
@@ -20,7 +21,7 @@
 
 发现并修复：Windows 短路径与长路径比较、被格式化的日期/Vue 名称占位符、CJS 测试 Lint 边界、错误 cause 丢失、同一契约供 Vite 与 Nest 使用时的 ESM/CommonJS 入口不匹配。修复后完成三套全量验证，没有未解决的技术失败。
 
-CI 提供 ubuntu-latest/windows-latest 和三种预设矩阵；当前未推送，未执行远端 CI。本机无 Linux 环境，不能据 Windows 成功推断 Linux 通过。CLI 交互、npm 打包/发布和产品迁移属于后续阶段，未执行。
+维护者授权后，6ae8374、bb67bd9 已推送到 origin/master。[首次 CI](https://github.com/tanghaojie/CoAIForge/actions/runs/37642662208) 对提交 bb67bd97c2c32231e63c8e0f5dd6ef3a8f11d55c 返回 success：治理任务，以及 ubuntu-latest/windows-latest × frontend/backend/fullstack 六项预设任务均成功。每项预设实际执行独立生成、冻结安装、格式、Lint、类型、模块、文档、构建、治理与适用后端/契约测试和 bootstrap；Linux 结果来自远端实际执行。CLI 交互、npm 打包/发布和产品迁移属于后续阶段，未执行。
 
 人工预览已启动：[前端空工程](http://127.0.0.1:5175/)和[全栈 health](http://127.0.0.1:5173/)。它们用于维护者验收，启动日志不代表交互通过。进程结束后按生成工程开发命令重新启动。
 

@@ -1,4 +1,10 @@
 {
   "schemaVersion": 1,
-  "baseline": null
+  "baseline": {
+    "commit": "6ae8374cee41f34fd432e759a0ea3e5b61d4683c",
+    "reviewedAt": "2026-10-07T15:10:12.525Z",
+    "acceptedAdrIds": ["decisions/ADR-20261007-independent-starter.md"],
+    "completedPlanIds": [],
+    "acknowledgedTriggerIds": []
+  }
 }

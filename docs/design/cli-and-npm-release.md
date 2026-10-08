@@ -10,7 +10,7 @@ owner: project maintainers
 
 ## 目标与状态
 
-维护者明确指定发布包名 create-coaiforge，并授权完成 CLI 和 npm 发布。首次版本沿用 0.1.0，仓库和产品名仍为 CoAIForge。当前正在实施；P1 的三种模板及前端人工验收结论保持既有证据边界。
+维护者明确指定发布包名 create-coaiforge，并授权完成 CLI 和 npm 发布。首次版本 0.1.0 已于 2026-10-08 公开发布，latest 指向该版本；仓库和产品名仍为 CoAIForge。三种预设均已通过公开 npm 包实际创建，Windows/Linux 打包验证通过；P1 前端人工验收保持既有证据边界。完整证据见[发布验证](../reference/p2-release-validation.md)。
 
 ## 入口、依赖与数据流
 
@@ -36,5 +36,5 @@ CLI 测试覆盖三种选择、交互参数、无终端缺参、非法参数、�
 
 ## 关联
 
-- [实施计划](../plans/active/2026-10-08-cli-npm-release.md)
+- [完成计划](../archive/plans/2026-10-08-cli-npm-release.md)
 - [发布决策](../decisions/ADR-20261008-create-coaiforge-release.md)

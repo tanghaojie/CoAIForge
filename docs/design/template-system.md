@@ -2,7 +2,7 @@
 title: 模板组合与 P1 实施
 status: accepted
 created: 2026-10-07
-updated: 2026-10-07
+updated: 2026-10-08
 owner: project maintainers
 ---
 
@@ -22,7 +22,7 @@ P1 提供维护者组合工具和三套固定锁文件。P2 增加 [create-coaif
 
 ## 生命周期与验证
 
-生成结果没有来源 Git 历史、计划、日志或 ledger SHA。初始 ledger 未登记；首个真实提交后显式登记基线。未来 CLI 默认仅 git init，不自动首提交。
+生成结果没有来源 Git 历史、计划、日志或 ledger SHA。初始 ledger 未登记；首个真实提交后显式登记基线。已发布的 CLI 默认仅 git init 并配置本地 hooks，不自动首提交；--no-git 跳过初始化。
 
 治理脚本覆盖模块依赖、文档结构、提交规范和归档审计。三种组合分别在系统临时目录中安装、格式/Lint/类型/构建及适用测试，脱离来源和模板仓库均通过。契约由同一源码生成 ESM/CommonJS 条件导出，实际 import/require 与生产前端打包均通过。模块检查包含别名、动态导入、条件包导出、私有依赖、循环和应用 workspace 互导。前端验收由人类执行。Windows/Linux 成功与未执行项分别记录，不推断跨平台结果。
 

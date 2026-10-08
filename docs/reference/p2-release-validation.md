@@ -13,6 +13,14 @@
 
 ## 发布与跨平台状态
 
-发布账户登录已核验，发布名称为 create-coaiforge，目标版本 0.1.0。实施提交后重建最终 tarball，记录其完整性并完成发布与 registry 消费核验；当前仍待执行，不声明已发布。
+最终发布源码为 61efd9afc00b22733486d45a87f3f62ad0d8868d。最终 tarball 的三个工程已再次通过全部适用检查，完整性为 `sha512-n2G+RZcQS0g9Rf9ML8/eg55ExXwZT5awylBN/UDmOsWi2TgWn6kCzX96ZZakCMPLZOr0bwoQZs2ay1fluyLs6w==`，发布文件 8 个，压缩后约 110.4 kB。
 
-CI 已将 Windows/Linux × 三种预设切换为实际 tarball 独立验证。[首次 P2 CI](https://github.com/tanghaojie/CoAIForge/actions/runs/37719064080) 对实施提交 97e3d90ebf220e9e99f5bb489b017e8621063734 完成 7 个成功任务，包括治理与两个系统的三个预设。原生终端退出修正后的 CI 与实际发布仍待最终核验。
+维护者完成 npm 官方身份验证后，2026-10-08 10:52（Asia/Singapore）npm publish 返回成功并接受 create-coaiforge@0.1.0，tag latest、public。首次处理期间版本查询为 E404；10:57 registry 登记 0.1.0，随后实际查询确认版本、bin、Prettier 3.9.6 依赖和完整性与验证产物完全一致。[公开 npm 包](https://www.npmjs.com/package/create-coaiforge)的 latest 已指向 0.1.0。
+
+在维护仓库之外的独立系统临时目录，通过 npm create --yes coaiforge@0.1.0 分别创建 frontend（--no-git）和 backend，通过 npm create --yes coaiforge@latest 创建 fullstack；三次均成功。三份生成清单的 CLI/模板版本均为 0.1.0，sourceCommit 均为上述最终源码；backend/fullstack 的 .githooks 配置生效且没有首提交，frontend 没有 .git。公开包与已验证 tarball 完整性相同，因此复用三套工程的完整验证证据，消费复验聚焦公开下载、参数转发、生成清单和 Git 生命周期。
+
+维护仓库内使用与根包完全相同的固定版本时，npm 会优先解析本地包，尚未安装根 bin 链接时可能报命令不存在；仓库外固定版本复验成功。这一维护环境现象不归因于公开包。发布指南要求在维护仓库之外消费验证，避免本地包掩盖公开下载。
+
+CI 已将 Windows/Linux × 三种预设切换为实际 tarball 独立验证。[首次 P2 CI](https://github.com/tanghaojie/CoAIForge/actions/runs/37719064080) 对实施提交 97e3d90ebf220e9e99f5bb489b017e8621063734 完成 7 个成功任务；[最终发布源码 CI](https://github.com/tanghaojie/CoAIForge/actions/runs/37719616478) 对 61efd9afc00b22733486d45a87f3f62ad0d8868d 也完成 7 个成功任务，包括治理与两个系统的三个预设。
+
+正常授权环境中的 Windows 交互创建成功且立即退出；受限终端环境曾出现 I/O 驻留，不能将其直接认作项目失败。Ctrl+C 原生退出及正常终端创建均有实际复验。

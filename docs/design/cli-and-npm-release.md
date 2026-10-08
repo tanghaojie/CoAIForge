@@ -18,7 +18,7 @@ owner: project maintainers
 
 用户明确授权发布 0.2.1，携带 Node 20、Nest 11 与 pnpm >=10.26.0 的无上限声明。已于 2026-10-08 公开发布，当前 latest 为 0.2.1。使用引用源码提交 99b2a7e2bef1c6aae4111265991668162097dcdd 的实际已验证 tarball，三种输出适用检查和公开创建通过，registry integrity 一致；见[0.2.1 发布验证](../reference/v0.2.1-release-validation.md)。
 
-初次源码依赖调整已随 0.2.0 公开发布。随后按用户要求扩大到 Node 20 / pnpm 10 的源码调整见[升级策略](dependency-lifecycle.md)和[兼容验证](../reference/toolchain-compatibility-validation.md)，现随 0.2.1 公开发布。已发布 0.1.0、0.2.0 的 tarball 与历史验证保持发布时事实；本地相同版本号的测试 tarball 不能作为 registry 已更新的证据。
+初次源码依赖调整已随 0.2.0 公开发布。随后扩大到 Node 20 / pnpm 10 的调整见[兼容验证](../reference/toolchain-compatibility-validation.md)，已随 0.2.1 公开发布。用户进一步确认当前源码将 Node 要求收敛为 ^22.13.0 || >=24.0.0，保留现有依赖与 pnpm 范围；见[升级策略](dependency-lifecycle.md)。该收敛尚未公开发布，已发布各版本的 tarball 与历史验证保持发布时事实；本地相同版本号的测试 tarball 不能作为 registry 已更新的证据。
 
 当前源码提供 scripts/cli/create-coaiforge.mjs，入口只调用同目录 create-project.mjs 的 runCli。CLI 是模板维护工具，不是生成应用的业务模块；公共边界沿用 scripts/templates/compose.mjs 的 compose。发布资源构建入口为 scripts/release/build.mjs 的 buildBundle。CLI 依赖组合器和 Node 内建交互/Git/文件接口，不引入交互框架；Prettier 为组合器运行时依赖，生成工程仍将其作为开发依赖。布局见[工程工具布局](project-layout.md)；本次源码收拢尚未公开发布，不改变 0.2.1 tarball 或既有生成项目。
 

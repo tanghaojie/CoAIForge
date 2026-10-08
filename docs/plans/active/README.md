@@ -1,5 +1,7 @@
 # 活动计划
 
+- [收敛 Node 运行时范围](../../archive/plans/2026-10-08-node22-runtime.md)：依赖与锁文件保持不变，根与三种输出检查通过，完成归档。
+
 - [收拢根目录工程工具及归档复核](../../archive/plans/2026-10-08-project-layout.md)：三种本地产物验证通过，完成归档，按真实提交登记基线。
 
 - [pnpm 原生启动器修复](../../archive/plans/2026-10-08-pnpm-native-launcher.md)及[收尾归档复核](../../archive/plans/2026-10-08-launcher-archive-review.md)：本地验证通过并归档，Linux CI 待远端确认。

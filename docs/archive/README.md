@@ -1,5 +1,7 @@
 # 历史归档
 
+- [Node 运行时收敛计划](plans/2026-10-08-node22-runtime.md)与[协作记录](ai-logs/build/2026/10/2026-10-08-node22-runtime.md)：当前源码与新生成工程要求 Node ^22.13.0 || >=24.0.0，现有依赖和锁文件不变；根与三种输出检查通过，远端 CI 未运行，尚未发布。现行来源为[依赖策略](../design/dependency-lifecycle.md)。
+
 - [根目录工具收拢及复核计划](plans/2026-10-08-project-layout.md)与[协作记录](ai-logs/refactor/2026/10/2026-10-08-project-layout.md)：hooks、模块注册表和 CLI 收到 scripts，Windows 三种产物及实际 Git hooks 通过；现行来源为[布局设计](../design/project-layout.md)，证据见[验证记录](../reference/project-layout-validation.md)。旧发布布局保留，按真实复核提交登记基线。
 
 - [pnpm 原生启动器修复计划](plans/2026-10-08-pnpm-native-launcher.md)与[协作记录](ai-logs/fix/2026/10/2026-10-08-pnpm-native-launcher.md)：修复 Unix 原生程序被 Node 解析的问题，根与 Windows 三种产物验证通过，Linux CI 待远端确认；现行来源为[运行时设计](../design/dependency-lifecycle.md)。

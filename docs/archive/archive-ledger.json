@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "baseline": {
-    "commit": "e6c43b6a22cfb46b8a4af629a45a65bf4b8fa844",
-    "reviewedAt": "2026-10-08T04:42:42.353Z",
+    "commit": "5dbeb8b659820c2d37a3b9be1a2833a0e27476c1",
+    "reviewedAt": "2026-10-08T12:13:27.062Z",
     "acceptedAdrIds": [
       "decisions/ADR-20261007-independent-starter.md",
       "decisions/ADR-20261008-create-coaiforge-release.md",
@@ -12,7 +12,11 @@
       "archive/plans/2026-10-07-starter-p1.md",
       "archive/plans/2026-10-08-cli-npm-release.md",
       "archive/plans/2026-10-08-compatible-environment-release.md",
-      "archive/plans/2026-10-08-release-archive-review.md"
+      "archive/plans/2026-10-08-launcher-archive-review.md",
+      "archive/plans/2026-10-08-pnpm-native-launcher.md",
+      "archive/plans/2026-10-08-release-archive-review.md",
+      "archive/plans/2026-10-08-toolchain-compatibility.md",
+      "archive/plans/2026-10-08-v0.2.1-release.md"
     ],
     "acknowledgedTriggerIds": []
   }

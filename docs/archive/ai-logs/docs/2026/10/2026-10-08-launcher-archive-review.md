@@ -20,3 +20,5 @@ owner: project maintainers
 ## 验证、偏差、未决事项和提交
 
 根测试、格式、Lint、文档、模块、提交规范及 Windows 三种实际产物验证通过。按治理协议先提交已归档复核内容，再登记当前真实完整 SHA；不把未提交内容当成基线。阈值触发时的 DUE 与登记后的 NOT_DUE 分开记录；最终真实基线由 archive-ledger.json 与其 Git 历史核对。Linux CI 仍待远端执行。
+
+实际修复与复核提交为 5dbeb8b659820c2d37a3b9be1a2833a0e27476c1。归档前审计 completedPlans 为 4，状态 DUE；该提交后在干净工作区执行 docs:archive:complete 并登记同一 SHA，最终 docs:archive:check:ci 为 NOT_DUE，新增计数归零。台账提交与记录一致，未修改策略阈值。

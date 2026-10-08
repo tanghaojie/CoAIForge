@@ -71,7 +71,7 @@ for (const preset of requested ? [requested] : ['frontend', 'backend', 'fullstac
     { cwd: consumer, stdio: 'pipe' },
   )
   assert.equal(readJson(join(target, '.template-manifest.json')).cliVersion, metadata.version)
-  runPnpm(target, ['install', '--frozen-lockfile'])
+  runPnpm(target, ['install', '--frozen-lockfile', '--strict-peer-dependencies'])
   for (const command of [
     'format:check',
     'lint',

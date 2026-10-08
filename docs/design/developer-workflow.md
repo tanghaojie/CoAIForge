@@ -2,13 +2,15 @@
 title: 开发与启动流程
 status: accepted
 created: 2026-10-07
-updated: 2026-10-07
+updated: 2026-10-08
 owner: project maintainers
 ---
 
 # 开发与启动流程
 
-使用 Node 24.18.0、pnpm 11.13.1；packageManager、engines、.node-version 与锁文件共同固定环境。`pnpm install --frozen-lockfile` 安装，`pnpm prepare` 安装本地 hooks。无独立 Git 根时 prepare 明确跳过，不修改父仓库。
+使用最新 Node LTS（最低 24.21.0）与 pnpm ^12.10.1；.node-version 使用 lts/*，devEngines.packageManager 声明 pnpm 范围。直接依赖使用兼容范围，锁文件记录验证过的依赖图。`pnpm install --frozen-lockfile` 安装，`pnpm prepare` 安装本地 hooks。无独立 Git 根时 prepare 明确跳过，不修改父仓库。
+
+`pnpm update -r` 更新兼容依赖并刷新锁文件；跨大版本先审查 peer、迁移与构建影响。维护仓库更新模板声明后运行 `pnpm templates:locks` 及 `pnpm package:verify`；生成工程不含模板维护命令，更新后执行本工程的适用检查。详见[升级策略](dependency-lifecycle.md)。
 
 `pnpm format`、`pnpm format:check`、`pnpm lint`、`pnpm typecheck`、`pnpm build` 使用所选 workspace。`pnpm test` 只执行治理脚本以及存在的后端/契约测试。
 

@@ -80,7 +80,7 @@ export async function compose({
     private: true,
     type: 'module',
     license: 'MIT',
-    packageManager: maintenance.packageManager,
+    devEngines: maintenance.devEngines,
     engines: maintenance.engines,
     scripts: Object.fromEntries(
       Object.entries(maintenance.scripts).filter(([key]) =>
@@ -149,11 +149,11 @@ export async function compose({
     .map(([dependency, value]) => `| ${dependency} | ${value.version} | ${value.license} |`)
   planned.set(
     'docs/reference/dependencies.md',
-    `# 依赖与许可\n\nNode 24.18.0、pnpm 11.13.1；下表仅列本次所选工程的直接依赖，精确版本与冻结锁文件共同固定。保留依赖包自身许可声明。\n\n| 包 | 版本 | 许可证 |\n| --- | --- | --- |\n${dependencyRows.join('\n')}\n\n模板采用 MIT，保留来源 2026 JTLab 声明。workspace 契约属于本项目；无产品资源、实际环境配置或来源开发历史。\n`,
+    `# 依赖与许可\n\nNode ${maintenance.engines.node}（使用最新 LTS）、pnpm ${maintenance.engines.pnpm}；下表仅列本次所选工程的直接依赖范围，锁文件记录验证过的依赖图。使用 pnpm update -r 更新兼容版本后重新验证并提交锁文件；跨大版本需单独审查。保留依赖包自身许可声明。\n\n| 包 | 版本范围 | 许可证 |\n| --- | --- | --- |\n${dependencyRows.join('\n')}\n\n模板采用 MIT，保留来源 2026 JTLab 声明。workspace 契约属于本项目；无产品资源、实际环境配置或来源开发历史。\n`,
   )
   planned.set(
     'pnpm-workspace.yaml',
-    `packages:\n${recipe.workspaces.map((path) => `  - '${path}'`).join('\n')}\n\nallowBuilds:\n  '@nestjs/core': false\n  esbuild: true\n\nminimumReleaseAge: 1440\n`,
+    `packages:\n${recipe.workspaces.map((path) => `  - '${path}'`).join('\n')}\n\nengineStrict: true\nsavePrefix: '^'\npmOnFail: download\n\nallowBuilds:\n  '@nestjs/core': false\n  esbuild: true\n\nminimumReleaseAge: 1440\n`,
   )
   let sourceCommit = recordedSourceCommit ?? null
   if (recordedSourceCommit === undefined) {

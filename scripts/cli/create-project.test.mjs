@@ -100,7 +100,10 @@ test('bundled CLI creates three standalone presets with hidden files, correct de
     const pkg = readJson(join(target, 'package.json'))
     for (const key of ['prepack', 'package:build', 'package:verify', 'cli'])
       assert.equal(pkg.scripts[key], undefined)
-    assert.equal(pkg.devDependencies.prettier, '3.9.6')
+    assert.equal(
+      pkg.devDependencies.prettier,
+      readJson(join(projectRoot, 'package.json')).dependencies.prettier,
+    )
     assert.equal(pkg.dependencies, undefined)
     const metadata = readJson(join(target, '.template-manifest.json'))
     assert.equal(metadata.cliVersion, readJson(join(projectRoot, 'package.json')).version)

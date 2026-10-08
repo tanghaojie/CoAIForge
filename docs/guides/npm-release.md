@@ -1,6 +1,6 @@
 # create-coaiforge 发布
 
-使用 Node 24.18.0、pnpm 11.13.1。包名为 create-coaiforge，仓库名称仍为 CoAIForge；npm create coaiforge@latest 调用包的 bin 入口。
+使用最新 Node LTS（最低 24.21.0）、pnpm ^12.10.1。包名为 create-coaiforge，仓库名称仍为 CoAIForge；npm create coaiforge@latest 调用包的 bin 入口。
 
 1. 更新根 package.json 版本和发布记录。模板与 CLI 版本保持同一发布版本，检查用户可见变化和生成工程依赖。
 2. 执行 pnpm install --frozen-lockfile、pnpm format、pnpm format:check、pnpm lint、pnpm test、pnpm docs:check、pnpm modules:check、pnpm docs:archive:check:ci。

@@ -34,10 +34,16 @@
     "ai",
     "agents"
   ],
-  "packageManager": "pnpm@11.13.1",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^12.10.1",
+      "onFail": "warn"
+    }
+  },
   "engines": {
-    "node": ">=24.18.0 <25",
-    "pnpm": "11.13.1"
+    "node": ">=24.21.0",
+    "pnpm": "^12.10.1"
   },
   "scripts": {
     "prepare": "node scripts/git/install-hooks.mjs",
@@ -54,6 +60,7 @@
     "docs:archive:complete": "node scripts/docs/archive-audit.mjs --complete",
     "commits:check": "node scripts/git/check-range.mjs",
     "template:compose": "node scripts/templates/compose.mjs",
+    "templates:locks": "node scripts/templates/seed-locks.mjs",
     "templates:verify": "node scripts/templates/verify.mjs",
     "cli": "node bin/create-coaiforge.mjs",
     "package:build": "node scripts/release/build.mjs",
@@ -61,16 +68,16 @@
     "prepack": "node scripts/release/build.mjs"
   },
   "dependencies": {
-    "prettier": "3.9.6"
+    "prettier": "^3.9.9"
   },
   "devDependencies": {
-    "@eslint/js": "10.0.1",
-    "@types/node": "24.19.1",
-    "eslint": "10.8.0",
-    "eslint-plugin-vue": "10.10.0",
-    "typescript": "5.9.3",
-    "typescript-eslint": "8.65.0",
-    "vue-eslint-parser": "10.4.1",
-    "yaml": "2.9.1"
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.19.1",
+    "eslint": "^10.12.0",
+    "eslint-plugin-vue": "^10.11.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.1",
+    "vue-eslint-parser": "^10.4.1",
+    "yaml": "^2.9.1"
   }
 }

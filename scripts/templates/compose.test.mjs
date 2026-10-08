@@ -24,6 +24,15 @@ test('all combinations contain only selected workspaces and fresh project histor
     assert.deepEqual(checkDocs(target), [])
     assert.deepEqual(checkModules(target), [])
     assert.equal(readJson(join(target, '.template-manifest.json')).cliVersion, null)
+    const pkg = readJson(join(target, 'package.json'))
+    assert.equal(Object.hasOwn(pkg, 'packageManager'), false)
+    assert.equal(pkg.devEngines.packageManager.name, 'pnpm')
+    assert.equal(pkg.devEngines.packageManager.version, pkg.engines.pnpm)
+    assert.ok(pkg.engines.pnpm.startsWith('^'))
+    const dependencyDoc = readFileSync(join(target, 'docs/reference/dependencies.md'), 'utf8')
+    assert.ok(dependencyDoc.includes(`Node ${pkg.engines.node}`))
+    assert.ok(dependencyDoc.includes(`pnpm ${pkg.engines.pnpm}`))
+    assert.equal(readFileSync(join(target, '.node-version'), 'utf8').trim(), 'lts/*')
     if (preset !== 'backend')
       assert.ok(
         readFileSync(join(target, 'apps/frontend/src/App.vue'), 'utf8').includes(

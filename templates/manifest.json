@@ -19,6 +19,7 @@
     "docs/design/module-boundaries.md",
     "docs/design/documentation-governance.md",
     "docs/design/developer-workflow.md",
+    "docs/design/dependency-lifecycle.md",
     "docs/design/validation.md",
     "docs/guides/getting-started.md",
     "docs/reference/dependencies.md",

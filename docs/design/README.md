@@ -1,5 +1,7 @@
 # 现行设计
 
+- [运行时与依赖升级](dependency-lifecycle.md)：最新 LTS、兼容版本范围、锁文件刷新与验证。
+
 - [CLI 与 npm 发布](cli-and-npm-release.md)：交互创建、Git 生命周期、模板快照与 create-coaiforge 发布。
 - [模板组合](template-system.md)：公共基础、应用片段、全栈补充和可复现产物。
 - [模块边界](module-boundaries.md)：公共接口、依赖及 HTTP 规范。

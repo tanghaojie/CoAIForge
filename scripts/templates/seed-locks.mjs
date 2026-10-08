@@ -10,12 +10,12 @@ mkdirSync(join(projectRoot, 'templates/locks'), { recursive: true })
 for (const preset of ['frontend', 'backend', 'fullstack']) {
   const target = join(directory, preset)
   await compose({ target, preset, name: 'lock-seed', withLock: false })
-  runPnpm(target, ['install', '--lockfile-only'])
+  runPnpm(target, ['install', '--lockfile-only', '--strict-peer-dependencies'])
   const lock = readFileSync(join(target, 'pnpm-lock.yaml'), 'utf8').replaceAll(
     '@lock-seed/',
     '@{{PROJECT_NAME}}/',
   )
   writeFileSync(join(projectRoot, 'templates/locks', `${preset}.yaml`), lock)
-  console.log(`Pinned ${preset} dependency graph`)
+  console.log(`Refreshed ${preset} dependency graph within declared ranges`)
 }
 console.log(`Seed projects: ${directory}`)

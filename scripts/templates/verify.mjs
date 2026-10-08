@@ -15,7 +15,7 @@ for (const preset of presets) {
   const target = join(directory, preset)
   console.log(`Verifying ${preset} independently at ${target}`)
   const generated = await compose({ target, preset, name: `verified-${preset}` })
-  runPnpm(target, ['install', '--frozen-lockfile'])
+  runPnpm(target, ['install', '--frozen-lockfile', '--strict-peer-dependencies'])
   for (const command of [
     'format:check',
     'lint',

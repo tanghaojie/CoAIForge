@@ -35,15 +35,15 @@
     "agents"
   ],
   "engines": {
-    "node": "^22.13.0 || >=24.0.0",
-    "pnpm": ">=11.13.1 <13"
+    "node": "^20.19.0 || ^22.13.0 || >=24.0.0",
+    "pnpm": ">=10.26.0 <13"
   },
   "scripts": {
     "prepare": "node scripts/git/install-hooks.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint .",
-    "test": "node --test scripts/**/*.test.mjs",
+    "test": "node scripts/lib/run-tests.mjs scripts",
     "docs:check": "node scripts/docs/check.mjs",
     "modules:check": "node scripts/architecture/check-modules.mjs",
     "docs:archive:check": "node scripts/docs/archive-audit.mjs",
@@ -65,7 +65,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@types/node": "^22.20.5",
+    "@types/node": "^20.19.43",
     "eslint": "^10.12.0",
     "eslint-plugin-vue": "^10.11.1",
     "typescript": "^6.0.3",

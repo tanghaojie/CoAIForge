@@ -108,7 +108,7 @@ export async function compose({
     ...packageJson.scripts,
     typecheck: 'pnpm -r --if-present typecheck',
     build: 'pnpm -r --if-present build',
-    test: 'node --test scripts/**/*.test.mjs && pnpm -r --if-present test',
+    test: 'node scripts/lib/run-tests.mjs scripts && pnpm -r --if-present test',
   }
   for (const layer of recipe.layers) {
     const directory = join(root, 'templates', layer)
@@ -148,7 +148,7 @@ export async function compose({
     .map(([dependency, value]) => `| ${dependency} | ${value.version} | ${value.license} |`)
   planned.set(
     'docs/reference/dependencies.md',
-    `# 依赖与许可\n\nNode ${maintenance.engines.node}（兼容即可，推荐 Node 24）、pnpm ${maintenance.engines.pnpm}；下表仅列本次所选工程的直接依赖范围，锁文件记录验证过的依赖图。使用 pnpm update -r 更新兼容版本后重新验证并提交锁文件；跨大版本需单独审查。保留依赖包自身许可声明。\n\n| 包 | 版本范围 | 许可证 |\n| --- | --- | --- |\n${dependencyRows.join('\n')}\n\n模板采用 MIT，保留来源 2026 JTLab 声明。workspace 契约属于本项目；无产品资源、实际环境配置或来源开发历史。\n`,
+    `# 依赖与许可\n\nNode ${maintenance.engines.node}（兼容即可，推荐 Node 22）、pnpm ${maintenance.engines.pnpm}；下表仅列本次所选工程的直接依赖范围，锁文件记录验证过的依赖图。使用 pnpm update -r 更新兼容版本后重新验证并提交锁文件；跨大版本需单独审查。保留依赖包自身许可声明。\n\n| 包 | 版本范围 | 许可证 |\n| --- | --- | --- |\n${dependencyRows.join('\n')}\n\n模板采用 MIT，保留来源 2026 JTLab 声明。workspace 契约属于本项目；无产品资源、实际环境配置或来源开发历史。\n`,
   )
   planned.set(
     'pnpm-workspace.yaml',

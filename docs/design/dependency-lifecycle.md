@@ -10,17 +10,17 @@ owner: project maintainers
 
 ## 目标与边界
 
-维护仓库和三种生成工程允许兼容版本升级，不再以精确直接依赖或固定 Node/pnpm 补丁版本限制长期迭代。环境按实际兼容下界声明，无需特别新的 Node/pnpm；0.2.0 发布携带这一策略及当前模板。不改既有生成工程、应用模块或 HTTP 契约。
+维护仓库和三种生成工程允许兼容版本升级，不再以精确直接依赖或固定 Node/pnpm 补丁版本限制长期迭代。环境按实际兼容下界声明，无需特别新的 Node/pnpm。已发布 0.2.0 的范围仍以其发布记录为准；本轮更低的环境下界与 Nest 11 模板在下一次发布后供公开创建使用。不改既有生成工程、应用模块或 HTTP 契约。
 
 ## 环境与版本范围
 
-Node engines 为 ^22.13.0 || >=24.0.0，由当前依赖共同要求决定；.node-version 推荐 24，接受兼容旧版本，不要求追随最新补丁。pnpm engines 为 >=11.13.1 <13，接受 11/12 系列的兼容版本。移除 packageManager、devEngines.packageManager 和 pmOnFail，不因进入工程自动下载或切换包管理器。组合器只复制 engines，依赖表从实际 engines 生成环境说明。CI 显式验证 Node 22.13.0 / pnpm 11.13.1 下界和 Node 24 / pnpm 12 的组合，推荐版本与兼容范围职责不同。
+Node engines 为 ^20.19.0 || ^22.13.0 || >=24.0.0，.node-version 推荐 22，已有兼容环境即可，不要求最新补丁。Node 20.19 是 Vite 8 与 ESLint 10 的共同下界；22 系列下界由 ESLint 10 的 ^22.13.0 决定。pnpm engines 为 >=10.26.0 <13，支持 10/11/12 的兼容版本；10.26 是当前 allowBuilds 配置的首次支持版本。保留无 packageManager、devEngines.packageManager 和 pmOnFail 的行为，不自动下载或切换工具。组合器复制 engines，依赖说明从实际 engines 生成。CI 覆盖 Node 20.19.0 / pnpm 10.26.0、Node 22.13.0 / pnpm 11.13.1 与 Node 24 / pnpm 12，推荐版本与兼容下界分开。
 
-应用/工具直接依赖继续使用 ^兼容版本范围；workspace:* 保持内部契约链接。TypeScript 7.0.2 超出 typescript-eslint 8.71.1 的 >=4.8.4 <6.1.0 peer 范围，因此使用兼容版本 ^6.0.3。@types/node 对齐最低支持的 Node 22，避免在较旧兼容运行时中使用尚不存在的 API。
+应用/工具直接依赖继续使用 ^兼容版本范围；workspace:* 保持内部契约链接。TypeScript 7.0.2 超出 typescript-eslint 8.71.1 的 >=4.8.4 <6.1.0 peer 范围，因此使用兼容版本 ^6.0.3。@types/node 对齐最低支持的 Node 20，避免声明较新运行时才提供的 API。
 
-Nest 12 发布 ESM 包，后端仍产出 CommonJS，编译模块与解析模式为 NodeNext，以识别当前 Node 对同步 require(ESM) 的支持；Node16 的旧解析规则会拒绝这些导入。此兼容性由最低 Node 22.13.0 和实际后端生命周期测试约束，不关闭 TypeScript 检查。契约包的 ESM/CommonJS 条件导出保持原有结构。
+后端选择 Nest 11 的 ^11.2.7 兼容系列，Fastify 5 保持不变。Nest 12.1.2 虽声明 core 支持 Node >=20，但 common 的 file-type 22.1.1 要求 Node >=22；Nest 11.2.7 使用支持 Node >=20 的 file-type 21.3.4。模板未使用 Nest 12 专属 API，因此为支持 Node 20 同步调整 common/core/platform-fastify，不用 overrides 强行替换框架内部依赖。后端仍产出 CommonJS，保留 NodeNext 编译与解析、契约条件导出及现有 HTTP 行为。
 
-pnpm 11/12 的配置集中在 pnpm-workspace.yaml：engineStrict: true、savePrefix: '^'，保留 minimumReleaseAge: 1440 和受控 allowBuilds。.npmrc 仅用于按需 registry/auth 配置。锁文件由 pnpm 11 生成为单个 YAML 文档，不附带指定 pnpm 下载版本的环境锁。
+pnpm-workspace.yaml 集中配置 engineStrict: true、savePrefix: '^'、minimumReleaseAge: 1440 和受控 allowBuilds。pnpm 10 从 .npmrc 读取 engine-strict，因此 .npmrc 同时声明 engine-strict=true；这是兼容桥接，pnpm 11/12 使用 YAML。不降低安装权限或发行等待时间来扩大支持范围。锁文件使用 pnpm 10 可读取的 v9 YAML，不附带环境锁；所有支持系列使用冻结安装验证。
 
 ## 锁文件与更新路径
 
@@ -32,6 +32,8 @@ pnpm 11/12 的配置集中在 pnpm-workspace.yaml：engineStrict: true、savePre
 
 ## 验证与证据
 
+Node 20 的测试运行器不展开 scripts/**/*.test.mjs 这类 glob 参数，而 Node 22.13 不接受目录发现入口。维护仓库和模板统一通过 scripts/lib/run-tests.mjs 收集指定目录中的 .test.mjs/.test.cjs/.test.js，再以显式文件参数调用当前 Node 的 --test；未找到测试时报错，子进程失败码向上传递。保持治理、后端和契约测试范围，不添加前端自动化测试。
+
 执行维护仓库格式、Lint、治理测试、文档/模块/归档检查，刷新根与三套锁文件并验证实际 npm tarball 的 frontend/backend/fullstack 安装、格式、Lint、类型、构建及后端/契约测试。前端不运行浏览器或组件自动化；升级后的浏览器功能由维护者人工验收。Linux CI 已更新，但本轮仅将实际运行的平台登记为通过。
 
-Windows 实际验证与兼容性修正见维护仓库 docs/reference/dependency-upgrade-validation.md；生成工程不携带维护记录。锁文件刷新和两类模板验证入口显式使用 --strict-peer-dependencies，peer 失配不能被默默接受。
+初次升级证据见维护仓库 docs/reference/dependency-upgrade-validation.md；本轮扩大环境范围见维护仓库 docs/reference/toolchain-compatibility-validation.md。生成工程不携带维护历史，环境说明由组合器从实际 engines 生成。锁文件刷新和两类模板验证入口显式使用 --strict-peer-dependencies，peer 失配不能被默默接受。

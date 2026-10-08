@@ -18,7 +18,7 @@
   "scripts": {
     "build": "tsc && tsc -p tsconfig.esm.json && node scripts/finalize.mjs",
     "typecheck": "tsc --noEmit",
-    "test": "pnpm build && node --test test/*.test.cjs"
+    "test": "pnpm build && node ../../scripts/lib/run-tests.mjs test"
   },
   "dependencies": {
     "zod": "^4.6.5"

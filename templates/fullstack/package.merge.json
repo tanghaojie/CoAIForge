@@ -3,6 +3,6 @@
     "typecheck": "pnpm --filter @{{PROJECT_NAME}}/api-contract build && pnpm -r --if-present typecheck",
     "dev:frontend": "pnpm --filter @{{PROJECT_NAME}}/api-contract build && pnpm --filter @{{PROJECT_NAME}}/frontend dev",
     "dev:backend": "pnpm --filter @{{PROJECT_NAME}}/api-contract build && pnpm --filter @{{PROJECT_NAME}}/backend dev",
-    "test": "node --test scripts/**/*.test.mjs && pnpm --filter @{{PROJECT_NAME}}/api-contract build && pnpm -r --if-present test"
+    "test": "node scripts/lib/run-tests.mjs scripts && pnpm --filter @{{PROJECT_NAME}}/api-contract build && pnpm -r --if-present test"
   }
 }

@@ -1,5 +1,7 @@
 # 历史归档
 
+- [扩大环境兼容范围计划](plans/2026-10-08-toolchain-compatibility.md)与[协作记录](ai-logs/build/2026/10/2026-10-08-toolchain-compatibility.md)：Node 20 / pnpm 10 的三种预设、Node 22/24 的全栈验证通过；当前来源为[依赖策略](../design/dependency-lifecycle.md)与[兼容验证](../reference/toolchain-compatibility-validation.md)。
+
 - [0.2.0 发布归档复核](plans/2026-10-08-release-archive-review.md)与[协作记录](ai-logs/docs/2026/10/2026-10-08-release-archive-review.md)：完成计划阈值触发，复核现行设计、公开发布和历史验收边界；真实基线以 archive-ledger.json 为准。
 
 - [兼容环境与 0.2.0 发布计划](plans/2026-10-08-compatible-environment-release.md)与[协作记录](ai-logs/build/2026/10/2026-10-08-compatible-environment-release.md)：0.2.0 已公开发布，Node 22/24 与 pnpm 11/12 实际兼容验证、三种预设公开创建通过；现行来源为[依赖策略](../design/dependency-lifecycle.md)及[0.2.0 发布验证](../reference/v0.2.0-release-validation.md)。

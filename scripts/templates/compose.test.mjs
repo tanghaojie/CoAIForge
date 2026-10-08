@@ -31,7 +31,7 @@ test('all combinations contain only selected workspaces and fresh project histor
     const dependencyDoc = readFileSync(join(target, 'docs/reference/dependencies.md'), 'utf8')
     assert.ok(dependencyDoc.includes(`Node ${pkg.engines.node}`))
     assert.ok(dependencyDoc.includes(`pnpm ${pkg.engines.pnpm}`))
-    assert.equal(readFileSync(join(target, '.node-version'), 'utf8').trim(), '24')
+    assert.equal(readFileSync(join(target, '.node-version'), 'utf8').trim(), '22')
     if (preset !== 'backend')
       assert.ok(
         readFileSync(join(target, 'apps/frontend/src/App.vue'), 'utf8').includes(

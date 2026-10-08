@@ -1,5 +1,7 @@
 # AI 协作记录
 
+- [扩大环境兼容范围](../archive/ai-logs/build/2026/10/2026-10-08-toolchain-compatibility.md)：Node 20 / pnpm 10 与较新环境验证通过，完成归档。
+
 - [0.2.0 发布归档复核](../archive/ai-logs/docs/2026/10/2026-10-08-release-archive-review.md)：现行事实与历史边界已复核，完成归档。
 
 - [前端动画介绍](feat/2026/10/2026-10-08-frontend-introduction.md)：共享动画模块技术检查通过，人工验收待维护者。

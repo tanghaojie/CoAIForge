@@ -19,6 +19,8 @@ owner: project maintainers
 
 ## 验证、偏差、未决事项和提交
 
+本记录保留初次依赖升级的实际环境和选择；后续 Node 20 / pnpm 10 与 Nest 11 调整见[当前依赖策略](../../../../design/dependency-lifecycle.md)及[兼容验证](../../../../reference/toolchain-compatibility-validation.md)。既有前端人工验收仍待维护者确认。
+
 开始时 git diff --cached --quiet 通过，工作区为空，归档审计 NOT_DUE。pnpm 在沙箱无法打开版本数据库，在正常环境原样重跑通过。实际升级与验证结果记录如下。浏览器人工验收和 Linux 运行不得由静态检查推断。
 
 实际改动覆盖环境/直接依赖范围、根与三套锁文件、组合器环境与依赖表传播、CI、模板和验证入口。安装使用项目内 Node 24.21.0 与原生 pnpm 12.10.1，不改系统级工具。根严格 peer 安装、29 项测试及工程门禁通过，三种 tarball 消费验证通过。npm 对 download 声明拒绝和 Nest 12 的 Node16 ESM 错误已修正；没有关闭类型/peer 检查。

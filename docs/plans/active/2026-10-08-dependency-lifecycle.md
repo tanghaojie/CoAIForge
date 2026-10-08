@@ -24,4 +24,6 @@ owner: project maintainers
 
 TypeScript 使用最新兼容 6.0.3；Node 使用最新 LTS 24.21.0，类型定义对齐 Node 24。前端浏览器人工验收与 Linux CI 本轮尚未执行；不自动发布 npm。
 
+以上为初次升级阶段结果。后续环境兼容调整采用 Node 20 类型与 Nest 11，当前事实见[依赖策略](../../design/dependency-lifecycle.md)和[兼容验证](../../reference/toolchain-compatibility-validation.md)；本计划仅保留既有前端人工验收事项。
+
 维护仓库 29 项测试通过，三种 tarball 消费检查通过。Nest 12 迁移到 NodeNext，npm/pnpm 分别使用 warn/download 失败策略，严格 peer 参数进入锁文件刷新和消费验证。详见[验证记录](../../reference/dependency-upgrade-validation.md)。关联提交为包含本计划的 build(deps) 技术交付提交，可由 Git 文件历史定位；不将尚未创建的 SHA 写入记录。

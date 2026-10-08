@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { execFileSync } from 'node:child_process'
-import { mkdirSync, mkdtempSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { argument, projectRoot, readJson } from '../lib/project.mjs'
@@ -28,7 +28,7 @@ const expected = [
   'LICENSE',
   'README.md',
   'package.json',
-  'bin/create-coaiforge.mjs',
+  'scripts/cli/create-coaiforge.mjs',
   'scripts/cli/create-project.mjs',
   'scripts/templates/compose.mjs',
   'scripts/lib/project.mjs',
@@ -58,9 +58,9 @@ runNpm(consumer, [
   tarball,
 ])
 const installed = join(consumer, 'node_modules/create-coaiforge')
-const entry = join(installed, 'bin/create-coaiforge.mjs')
+const entry = join(installed, 'scripts/cli/create-coaiforge.mjs')
 const metadata = readJson(join(installed, 'package.json'))
-assert.equal(metadata.bin['create-coaiforge'], 'bin/create-coaiforge.mjs')
+assert.equal(metadata.bin['create-coaiforge'], 'scripts/cli/create-coaiforge.mjs')
 assert.equal(
   execFileSync(process.execPath, [entry, '--version'], { encoding: 'utf8' }).trim(),
   metadata.version,
@@ -78,6 +78,8 @@ for (const preset of requested ? [requested] : ['frontend', 'backend', 'fullstac
     { cwd: consumer, stdio: 'pipe' },
   )
   assert.equal(readJson(join(target, '.template-manifest.json')).cliVersion, metadata.version)
+  for (const path of ['.githooks', 'bin', '.module-boundaries.json', 'scripts/cli'])
+    assert.equal(existsSync(join(target, path)), false, path)
   runPnpm(target, ['install', '--frozen-lockfile', '--strict-peer-dependencies'])
   for (const command of [
     'format:check',
@@ -90,7 +92,46 @@ for (const preset of requested ? [requested] : ['frontend', 'backend', 'fullstac
     'docs:archive:check:bootstrap',
   ])
     runPnpm(target, [command])
-  results.push({ preset, target, checks: 'PASS' })
+  let hooks = 'not_run'
+  if (preset === 'backend') {
+    execFileSync('git', ['init', '--quiet', target])
+    execFileSync('git', ['-C', target, 'config', '--local', 'core.hooksPath', '.githooks'])
+    runPnpm(target, ['prepare'])
+    assert.equal(
+      execFileSync('git', ['-C', target, 'config', '--local', 'core.hooksPath'], {
+        encoding: 'utf8',
+      }).trim(),
+      'scripts/git/hooks',
+    )
+    writeFileSync(join(target, 'hook-check.json'), '{"hook":true}')
+    execFileSync('git', ['-C', target, 'add', 'hook-check.json'])
+    const commitArgs = [
+      '-C',
+      target,
+      '-c',
+      'user.name=Hook Verification',
+      '-c',
+      'user.email=hook-verification@example.test',
+      'commit',
+      '-m',
+    ]
+    assert.throws(
+      function invalidCommit() {
+        execFileSync('git', [...commitArgs, 'invalid title'], { stdio: 'pipe' })
+      },
+      function rejected(error) {
+        return error.status !== 0 && error.stderr.toString().includes('Use <type>')
+      },
+    )
+    assert.equal(readFileSync(join(target, 'hook-check.json'), 'utf8'), '{ "hook": true }\n')
+    assert.equal(
+      execFileSync('git', ['-C', target, 'show', ':hook-check.json'], { encoding: 'utf8' }),
+      '{ "hook": true }\n',
+    )
+    execFileSync('git', [...commitArgs, 'chore: verify generated hooks'], { stdio: 'pipe' })
+    hooks = 'PASS'
+  }
+  results.push({ preset, target, checks: 'PASS', hooks })
 }
 const report = {
   version: metadata.version,

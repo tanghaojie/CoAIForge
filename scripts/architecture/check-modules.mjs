@@ -69,7 +69,7 @@ function exportTarget(value) {
 export function checkModules(root) {
   const errors = []
   try {
-    const registry = readJson(join(root, '.module-boundaries.json'))
+    const registry = readJson(join(root, 'scripts/architecture/module-boundaries.json'))
     if (
       registry.schemaVersion !== 1 ||
       !Array.isArray(registry.assembly) ||

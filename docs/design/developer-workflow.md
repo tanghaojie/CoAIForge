@@ -10,6 +10,8 @@ owner: project maintainers
 
 Node 使用 ^20.19.0 || ^22.13.0 || >=24.0.0 范围，推荐 22；pnpm 使用 >=10.26.0。已有兼容环境即可，无需最新补丁或自动切换包管理器。直接依赖使用兼容范围，锁文件记录验证过的依赖图。`pnpm install --frozen-lockfile` 安装，`pnpm prepare` 安装本地 hooks。无独立 Git 根时 prepare 明确跳过，不修改父仓库。
 
+当前源码及其新生成工程的 hooks 位于 scripts/git/hooks，模块注册表位于 scripts/architecture/module-boundaries.json；详见[工程工具布局](project-layout.md)。旧版本项目采用显式迁移，不自动重写；移位后运行 pnpm prepare 更新本地 Git 路径。
+
 `pnpm update -r` 更新兼容依赖并刷新锁文件；跨大版本先审查 peer、迁移与构建影响。维护仓库更新模板声明后运行 `pnpm templates:locks` 及 `pnpm package:verify`；生成工程不含模板维护命令，更新后执行本工程的适用检查。详见[升级策略](dependency-lifecycle.md)。
 
 `pnpm format`、`pnpm format:check`、`pnpm lint`、`pnpm typecheck`、`pnpm build` 使用所选 workspace。`pnpm test` 只执行治理脚本以及存在的后端/契约测试。

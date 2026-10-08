@@ -95,8 +95,16 @@ test('bundled CLI creates three standalone presets with hidden files, correct de
     assert.equal(existsSync(join(target, 'apps/backend')), preset !== 'frontend')
     assert.equal(existsSync(join(target, 'packages/api-contract')), preset === 'fullstack')
     assert.equal(existsSync(join(target, '.git')), false)
-    for (const file of ['.gitignore', '.npmrc', '.githooks/commit-msg', 'pnpm-lock.yaml'])
+    for (const file of [
+      '.gitignore',
+      '.npmrc',
+      'scripts/git/hooks/commit-msg',
+      'scripts/architecture/module-boundaries.json',
+      'pnpm-lock.yaml',
+    ])
       assert.ok(existsSync(join(target, file)), file)
+    for (const path of ['.githooks', 'bin', '.module-boundaries.json', 'scripts/cli'])
+      assert.equal(existsSync(join(target, path)), false, path)
     const pkg = readJson(join(target, 'package.json'))
     for (const key of ['prepack', 'package:build', 'package:verify', 'cli'])
       assert.equal(pkg.scripts[key], undefined)
@@ -123,7 +131,15 @@ test('Git is initialized with local hooks and no initial commit; existing files 
     execFileSync('git', ['-C', target, 'config', '--local', 'core.hooksPath'], {
       encoding: 'utf8',
     }).trim(),
-    '.githooks',
+    'scripts/git/hooks',
+  )
+  execFileSync('git', ['-C', target, 'config', '--local', 'core.hooksPath', '.githooks'])
+  execFileSync(process.execPath, [join(target, 'scripts/git/install-hooks.mjs')])
+  assert.equal(
+    execFileSync('git', ['-C', target, 'config', '--local', 'core.hooksPath'], {
+      encoding: 'utf8',
+    }).trim(),
+    'scripts/git/hooks',
   )
   assert.notEqual(spawnSync('git', ['-C', target, 'rev-parse', '--verify', 'HEAD']).status, 0)
   const occupied = join(root, 'occupied')

@@ -1,5 +1,7 @@
 # 现行设计
 
+- [工程工具布局](project-layout.md)
+
 - [模块边界](module-boundaries.md)
 - [文档治理](documentation-governance.md)
 - [开发流程](developer-workflow.md)

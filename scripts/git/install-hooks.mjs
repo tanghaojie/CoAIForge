@@ -5,8 +5,8 @@ import { git, projectRoot, samePath } from '../lib/project.mjs'
 try {
   if (samePath(git(projectRoot, ['rev-parse', '--show-toplevel']), projectRoot)) {
     for (const name of ['pre-commit', 'commit-msg'])
-      chmodSync(join(projectRoot, '.githooks', name), 0o755)
-    git(projectRoot, ['config', '--local', 'core.hooksPath', '.githooks'])
+      chmodSync(join(projectRoot, 'scripts/git/hooks', name), 0o755)
+    git(projectRoot, ['config', '--local', 'core.hooksPath', 'scripts/git/hooks'])
     console.log('Installed local Git hooks')
   } else console.log('Skipping hooks: this directory is not a Git repository root')
 } catch {

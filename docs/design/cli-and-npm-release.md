@@ -20,17 +20,17 @@ owner: project maintainers
 
 初次源码依赖调整已随 0.2.0 公开发布。随后按用户要求扩大到 Node 20 / pnpm 10 的源码调整见[升级策略](dependency-lifecycle.md)和[兼容验证](../reference/toolchain-compatibility-validation.md)，现随 0.2.1 公开发布。已发布 0.1.0、0.2.0 的 tarball 与历史验证保持发布时事实；本地相同版本号的测试 tarball 不能作为 registry 已更新的证据。
 
-根包提供 bin/create-coaiforge.mjs，入口只调用 scripts/cli/create-project.mjs 的 runCli。CLI 是模板维护工具，不是生成应用的业务模块；公共边界沿用 scripts/templates/compose.mjs 的 compose。发布资源构建入口为 scripts/release/build.mjs 的 buildBundle。CLI 依赖组合器和 Node 内建交互/Git/文件接口，不引入交互框架；Prettier 为组合器运行时依赖，生成工程仍将其作为开发依赖。
+当前源码提供 scripts/cli/create-coaiforge.mjs，入口只调用同目录 create-project.mjs 的 runCli。CLI 是模板维护工具，不是生成应用的业务模块；公共边界沿用 scripts/templates/compose.mjs 的 compose。发布资源构建入口为 scripts/release/build.mjs 的 buildBundle。CLI 依赖组合器和 Node 内建交互/Git/文件接口，不引入交互框架；Prettier 为组合器运行时依赖，生成工程仍将其作为开发依赖。布局见[工程工具布局](project-layout.md)；本次源码收拢尚未公开发布，不改变 0.2.1 tarball 或既有生成项目。
 
 用户可运行 npm create coaiforge@latest，选择 frontend/backend/fullstack、项目目录和项目名。支持位置目录、--preset、--name、--no-git、--no-interactive、--help 和 --version。无交互终端时必须提供目录和预设，缺失参数立即失败。Ctrl+C 正常取消，不写未确认项目。默认只 git init 并配置本地 hooks，不安装依赖、不创建首提交；--no-git 明确跳过初始化。已有非空目录不可覆盖，非法名称、预设及参数在写入前拒绝；Git 缺失在生成前报告，生成后初始化失败保留工程并报告人工恢复步骤。
 
-服务层关闭 readline 并暂停/释放输入。Windows 原生控制台仍可能保留读句柄，因此 bin 在全部项目操作已结束、stdout/stderr 已刷新后显式结束交互进程；非交互调用使用正常退出码和自然退出，不截断管道输出。
+服务层关闭 readline 并暂停/释放输入。Windows 原生控制台仍可能保留读句柄，因此 CLI 可执行入口在全部项目操作已结束、stdout/stderr 已刷新后显式结束交互进程；非交互调用使用正常退出码和自然退出，不截断管道输出。
 
 CLI → 已打包的模板快照 → 临时资源目录 → 现有 compose → 独立目标工程 → 可选 Git 初始化。临时资源只包含清单指定的公共规则、治理源码、模板片段与固定锁文件，结束后清理。输出目录参数不作为 shell 字符串拼接；Git 由参数数组调用。
 
 ## npm 包边界与溯源
 
-根 package.json 改为可发布的 create-coaiforge，登记 bin、files、repository、homepage、bugs、description 和公开 registry。npm 发布只包含 CLI、组合器所需实现、LICENSE/README 及 dist/template-bundle.json。资源以 JSON 快照保存，确保 .gitignore、.npmrc、.githooks 等模板文件不受 npm 打包忽略规则影响；不包含来源 .git、环境变量、凭据、node_modules、维护历史或测试目录。
+根 package.json 改为可发布的 create-coaiforge，登记 bin、files、repository、homepage、bugs、description 和公开 registry。npm 发布只包含两个 scripts/cli 入口文件、组合器所需实现、LICENSE/README 及 dist/template-bundle.json，不能把同目录测试打包。资源以 JSON 快照保存，确保 .gitignore、.npmrc、scripts/git/hooks 等模板文件不受 npm 打包忽略规则影响；不包含来源 .git、环境变量、凭据、node_modules、维护历史或测试目录。
 
 快照记录模板版本和来源真实提交；生成清单额外记录 CLI 版本。组合器只选择生成工程的治理命令，不将打包/发布命令或 CLI 运行时依赖泄漏到生成工程。生成工程不复制来源计划、日志和审计台账基线。
 

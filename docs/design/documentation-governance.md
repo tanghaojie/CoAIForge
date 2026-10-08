@@ -18,6 +18,8 @@ frontmatter 包含 title/status/created/updated/owner 等适用字段；AI 日�
 
 策略位于 docs/archive/archive-policy.json，台账位于 archive-ledger.json。默认阈值：20 个有效提交、3 个新接受 ADR、3 个完成计划、30 天。有效提交排除仅有历史日志、计划、台账和索引的记录；现行代码和设计变化仍计算。显式即时触发证据登记 archive-triggers.json；模块边界变更和既有 ADR 被替代亦触发复核。
 
+模块注册表当前位于 scripts/architecture/module-boundaries.json。策略同时识别旧 .module-boundaries.json 与新路径，保证旧基线和路径迁移仍触发审查；阈值保持不变。
+
 NOT_DUE 无需复核；DUE 需创建复核计划；IN_PROGRESS 表示已有活动复核但尚未完成，CI 仍失败；BLOCKED 表示损坏配置、无效基线、结构或链接冲突等，保留证据并先修复。审计不自动移动文件，也不自动推进台账。
 
 ## 无 Git 与首基线

@@ -40,6 +40,8 @@ pnpm dev:frontend
 
 ## 维护模板与发布
 
+当前源码已将 hooks、模块注册表及 CLI 入口收拢到 scripts，详见[工程工具布局](docs/design/project-layout.md)。此布局尚未公开发布，npm 0.2.1 和已有生成项目保留发布时布局；移位后的维护仓库运行 pnpm prepare 更新本地 hooks。
+
 源码维护使用上述兼容环境，不要求最新补丁，也不自动下载指定 pnpm。安装后运行 `pnpm test` 验证治理与 CLI，`pnpm package:verify` 从实际 npm tarball 验证三种输出。
 
 生成工程通过 `pnpm update -r` 更新兼容依赖，重新验证后提交锁文件。维护仓库修改根与模板依赖声明后，运行 `pnpm update`、`pnpm templates:locks` 和 `pnpm package:verify`；跨大版本升级先检查兼容性。Node/pnpm 的兼容范围和 TypeScript 兼容限制见[依赖策略](docs/design/dependency-lifecycle.md)。

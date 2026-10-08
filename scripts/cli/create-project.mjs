@@ -139,12 +139,16 @@ export async function createProject({
   if (initializeGit) {
     try {
       execFileSync('git', ['init', '--quiet', target], { stdio: 'pipe', windowsHide: true })
-      execFileSync('git', ['-C', target, 'config', '--local', 'core.hooksPath', '.githooks'], {
-        stdio: 'pipe',
-        windowsHide: true,
-      })
+      execFileSync(
+        'git',
+        ['-C', target, 'config', '--local', 'core.hooksPath', 'scripts/git/hooks'],
+        {
+          stdio: 'pipe',
+          windowsHide: true,
+        },
+      )
       for (const hook of ['pre-commit', 'commit-msg'])
-        chmodSync(join(target, '.githooks', hook), 0o755)
+        chmodSync(join(target, 'scripts/git/hooks', hook), 0o755)
     } catch {
       throw new Error(
         `工程已生成到 ${target}，Git 初始化失败。请在该目录执行 git init，再安装依赖并运行 pnpm prepare。`,

@@ -5,10 +5,10 @@
   "type": "module",
   "license": "MIT",
   "bin": {
-    "create-coaiforge": "bin/create-coaiforge.mjs"
+    "create-coaiforge": "scripts/cli/create-coaiforge.mjs"
   },
   "files": [
-    "bin/",
+    "scripts/cli/create-coaiforge.mjs",
     "scripts/cli/create-project.mjs",
     "scripts/templates/compose.mjs",
     "scripts/lib/project.mjs",
@@ -55,7 +55,7 @@
     "template:compose": "node scripts/templates/compose.mjs",
     "templates:locks": "node scripts/templates/seed-locks.mjs",
     "templates:verify": "node scripts/templates/verify.mjs",
-    "cli": "node bin/create-coaiforge.mjs",
+    "cli": "node scripts/cli/create-coaiforge.mjs",
     "package:build": "node scripts/release/build.mjs",
     "package:verify": "node scripts/release/verify.mjs",
     "prepack": "node scripts/release/build.mjs"

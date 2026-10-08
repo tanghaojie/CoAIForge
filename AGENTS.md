@@ -18,7 +18,7 @@
 
 ## 工程与验证
 
-- 能力放入各 workspace 的 `src/modules/<module>/`，模块名跨层一致。登记职责、边界、公共文件、依赖、数据流、失败模式及验证策略；使用 `.module-boundaries.json` 与对应模块设计维护同一边界。
+- 能力放入各 workspace 的 `src/modules/<module>/`，模块名跨层一致。登记职责、边界、公共文件、依赖、数据流、失败模式及验证策略；使用 `scripts/architecture/module-boundaries.json` 与对应模块设计维护同一边界。
 - 跨模块只能导入登记的公共文件，依赖单向、显式、无循环；禁止跨模块私有状态、仓储或表操作。组装入口只组装；业务规则放入可测试模块。新功能不得扩大遗留结构耦合。
 - 有名称的函数优先使用 function 声明。格式仅取根 `.prettierrc.json`；代码完成后运行 `pnpm format`，最终运行 `pnpm format:check`。已有非本任务改动存在时不得借格式化覆盖，先隔离或询问。
 - 存在共享 API 契约时，Zod 运行时 Schema 为结构来源，类型由 z.infer 推导；先改契约再改调用方，后端运行时校验输入。HTTP、分页与错误约定见[模块规范](docs/design/module-boundaries.md)。

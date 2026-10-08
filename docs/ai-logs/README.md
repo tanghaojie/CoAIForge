@@ -1,5 +1,7 @@
 # AI 协作记录
 
+- [根目录工具收拢](../archive/ai-logs/refactor/2026/10/2026-10-08-project-layout.md)：三种实际 tarball 输出、hooks 与命令入口验证通过，完成归档。
+
 - [pnpm 原生启动器修复](../archive/ai-logs/fix/2026/10/2026-10-08-pnpm-native-launcher.md)及[收尾归档复核](../archive/ai-logs/docs/2026/10/2026-10-08-launcher-archive-review.md)：本地验证通过并归档，Linux CI 待远端确认。
 
 - [去掉 pnpm 上限并发布 0.2.1](../archive/ai-logs/build/2026/10/2026-10-08-v0.2.1-release.md)：已公开发布，开放 pnpm 声明、产物及三种公开创建验证通过，完成归档。

@@ -31,7 +31,7 @@ function fixture(t) {
       },
     ],
   }
-  putJson(root, '.module-boundaries.json', registry)
+  putJson(root, 'scripts/architecture/module-boundaries.json', registry)
   return { root, registry }
 }
 
@@ -56,7 +56,7 @@ test('cycles and undeclared dependencies are rejected', function (t) {
   )
   assert.ok(checkModules(root).some((error) => error.includes('Undeclared dependency')))
   registry.modules[1].dependencies = ['a']
-  putJson(root, '.module-boundaries.json', registry)
+  putJson(root, 'scripts/architecture/module-boundaries.json', registry)
   assert.ok(checkModules(root).some((error) => error.includes('cycle')))
 })
 
@@ -103,7 +103,7 @@ test('conditional workspace exports expose only registered public sources', func
     },
   })
   registry.modules[1].publicFiles.push('packages/contracts/src/modules/b/b.schema.ts')
-  putJson(root, '.module-boundaries.json', registry)
+  putJson(root, 'scripts/architecture/module-boundaries.json', registry)
   put(
     root,
     'apps/backend/src/modules/a/a.api.ts',

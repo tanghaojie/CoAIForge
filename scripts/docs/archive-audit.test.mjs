@@ -128,9 +128,19 @@ test('explicit triggers and architecture changes are immediate evidence', functi
     triggers: [{ id: 'architecture', reason: 'Module boundary changed' }],
   })
   assert.equal(audit(root, { now: reviewedAt }).status, 'DUE')
-  putJson(root, '.module-boundaries.json', { schemaVersion: 1, assembly: ['changed'], modules: [] })
+  putJson(root, 'scripts/architecture/module-boundaries.json', {
+    schemaVersion: 1,
+    assembly: ['changed'],
+    modules: [],
+  })
   assert.ok(
     audit(root, { now: reviewedAt }).reasons.some((reason) => reason.includes('Architecture')),
+  )
+  putJson(root, '.module-boundaries.json', { schemaVersion: 1, assembly: [], modules: [] })
+  assert.ok(
+    audit(root, { now: reviewedAt }).reasons.some((reason) =>
+      reason.endsWith(': .module-boundaries.json'),
+    ),
   )
 })
 

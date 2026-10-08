@@ -34,11 +34,15 @@ export function temporaryProject() {
   putJson(root, 'docs/archive/archive-policy.json', {
     schemaVersion: 1,
     thresholds: { effectiveCommits: 20, acceptedAdrs: 3, completedPlans: 3, days: 30 },
-    immediatePaths: ['.module-boundaries.json'],
+    immediatePaths: ['.module-boundaries.json', 'scripts/architecture/module-boundaries.json'],
   })
   putJson(root, 'docs/archive/archive-ledger.json', { schemaVersion: 1, baseline: null })
   putJson(root, 'docs/archive/archive-triggers.json', { schemaVersion: 1, triggers: [] })
-  putJson(root, '.module-boundaries.json', { schemaVersion: 1, assembly: [], modules: [] })
+  putJson(root, 'scripts/architecture/module-boundaries.json', {
+    schemaVersion: 1,
+    assembly: [],
+    modules: [],
+  })
   return root
 }
 

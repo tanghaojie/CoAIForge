@@ -10,4 +10,4 @@
 6. 使用 npm view create-coaiforge@<版本> version bin dependencies dist.integrity --json 验证与报告一致，再在维护仓库之外的独立目录通过 npm create coaiforge@<版本> 创建工程，确认其清单中的 CLI/模板版本和来源。维护仓库内的同名同版本根包可能被 npm 优先采用，不能作为公开消费证据。平台提示处理中时，等实际版本可查询后继续验证，不重复发布。
 7. 补充实际发布证据，完成计划与日志归档、索引和提交。保留本地验证与远端 CI 的实际边界。
 
-prepack 重建 dist/template-bundle.json。快照只纳入清单登记的模板资源，不纳入本机环境、来源历史或凭据；发布目录中的根 bin、组合器实现和运行时依赖由 package.json files/dependencies 控制。维护者发布实际已验证 tarball，不在验证后重新打包不同产物。
+prepack 重建 dist/template-bundle.json。快照只纳入清单登记的模板资源，不纳入本机环境、来源历史或凭据；发布目录中的 scripts/cli 可执行入口、组合器实现和运行时依赖由 package.json files/dependencies 控制，测试文件不进入白名单。维护者发布实际已验证 tarball，不在验证后重新打包不同产物。

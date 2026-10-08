@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { runCli } from '../scripts/cli/create-project.mjs'
+import { runCli } from './create-project.mjs'
 
 const status = await runCli()
 process.exitCode = status

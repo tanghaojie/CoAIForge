@@ -1,5 +1,7 @@
 # 现行设计
 
+- [工程工具布局](project-layout.md)：hooks、模块注册表与 CLI 收拢到 scripts，根 .npmrc 保留。
+
 - [前端动画介绍](frontend-introduction.md)：AI + 人汇合构建与按预设展示目录。
 
 - [运行时与依赖升级](dependency-lifecycle.md)：兼容环境、依赖版本范围、锁文件刷新与验证。

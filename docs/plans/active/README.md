@@ -1,5 +1,7 @@
 # 活动计划
 
+- [兼容环境与 0.2.0 npm 发布](2026-10-08-compatible-environment-release.md)：调整 Node/pnpm 兼容要求并验证发布产物。
+
 - [前端动画介绍](2026-10-08-frontend-introduction.md)：技术检查已通过，滚动动画与浏览器功能待人工验收。
 
 - [依赖升级与非固定版本声明](2026-10-08-dependency-lifecycle.md)：技术检查已通过，等待升级后的前端人工验收。

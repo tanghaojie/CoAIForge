@@ -6,7 +6,7 @@ import { test } from 'node:test'
 import { compose } from './compose.mjs'
 import { checkDocs } from '../docs/check.mjs'
 import { checkModules } from '../architecture/check-modules.mjs'
-import { readJson } from '../lib/project.mjs'
+import { projectRoot, readJson } from '../lib/project.mjs'
 import { removeTemporary } from '../lib/testing.mjs'
 
 test('all combinations contain only selected workspaces and fresh project history', async function (t) {
@@ -26,13 +26,12 @@ test('all combinations contain only selected workspaces and fresh project histor
     assert.equal(readJson(join(target, '.template-manifest.json')).cliVersion, null)
     const pkg = readJson(join(target, 'package.json'))
     assert.equal(Object.hasOwn(pkg, 'packageManager'), false)
-    assert.equal(pkg.devEngines.packageManager.name, 'pnpm')
-    assert.equal(pkg.devEngines.packageManager.version, pkg.engines.pnpm)
-    assert.ok(pkg.engines.pnpm.startsWith('^'))
+    assert.equal(Object.hasOwn(pkg, 'devEngines'), false)
+    assert.deepEqual(pkg.engines, readJson(join(projectRoot, 'package.json')).engines)
     const dependencyDoc = readFileSync(join(target, 'docs/reference/dependencies.md'), 'utf8')
     assert.ok(dependencyDoc.includes(`Node ${pkg.engines.node}`))
     assert.ok(dependencyDoc.includes(`pnpm ${pkg.engines.pnpm}`))
-    assert.equal(readFileSync(join(target, '.node-version'), 'utf8').trim(), 'lts/*')
+    assert.equal(readFileSync(join(target, '.node-version'), 'utf8').trim(), '24')
     if (preset !== 'backend')
       assert.ok(
         readFileSync(join(target, 'apps/frontend/src/App.vue'), 'utf8').includes(

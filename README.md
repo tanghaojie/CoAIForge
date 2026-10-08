@@ -10,9 +10,9 @@
 
 ## 创建项目
 
-使用最新 Node LTS（最低 24.21.0），生成工程使用 pnpm ^12.10.1。直接依赖采用兼容版本范围，锁文件记录验证过的依赖组合。
+Node 支持 22.13 起的 22 系列，以及 24 或更新版本；推荐 Node 24。pnpm 支持 >=11.13.1 <13，使用已有兼容版本即可。直接依赖采用兼容版本范围，锁文件记录验证过的依赖组合。
 
-此环境策略已在源码中更新；已发布的 0.1.0 保持发布时的模板，本轮升级将在后续版本发布后提供给 npm create 用户。
+0.2.0 包含依赖版本范围、兼容环境策略与前端动画介绍页。
 
 ```sh
 npm create coaiforge@latest
@@ -38,9 +38,9 @@ pnpm dev:frontend
 
 ## 维护模板与发布
 
-源码维护使用最新 Node LTS、pnpm ^12.10.1。安装后运行 `pnpm test` 验证治理与 CLI，`pnpm package:verify` 从实际 npm tarball 验证三种输出。
+源码维护使用上述兼容环境，不要求最新补丁，也不自动下载指定 pnpm。安装后运行 `pnpm test` 验证治理与 CLI，`pnpm package:verify` 从实际 npm tarball 验证三种输出。
 
-生成工程通过 `pnpm update -r` 更新兼容依赖，重新验证后提交锁文件。维护仓库修改根与模板依赖声明后，运行 `pnpm update`、`pnpm templates:locks` 和 `pnpm package:verify`；跨大版本升级先检查兼容性。Node/pnpm 的浮动范围和 TypeScript 兼容限制见[依赖策略](docs/design/dependency-lifecycle.md)。
+生成工程通过 `pnpm update -r` 更新兼容依赖，重新验证后提交锁文件。维护仓库修改根与模板依赖声明后，运行 `pnpm update`、`pnpm templates:locks` 和 `pnpm package:verify`；跨大版本升级先检查兼容性。Node/pnpm 的兼容范围和 TypeScript 兼容限制见[依赖策略](docs/design/dependency-lifecycle.md)。
 
 维护者仍可直接组合：
 

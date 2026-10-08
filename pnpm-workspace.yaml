@@ -2,7 +2,6 @@ packages: []
 
 engineStrict: true
 savePrefix: '^'
-pmOnFail: download
 
 allowBuilds:
   '@nestjs/core': false

@@ -14,9 +14,16 @@ if (requested && !['frontend', 'backend', 'fullstack'].includes(requested))
   throw new Error('Unknown preset')
 mkdirSync(join(projectRoot, '.generated'), { recursive: true })
 buildBundle()
-const packed = JSON.parse(
-  runNpm(projectRoot, ['pack', '--ignore-scripts', '--json', '--pack-destination', root]),
-)[0]
+const packOutput = runNpm(projectRoot, [
+  'pack',
+  '--ignore-scripts',
+  '--json',
+  '--pack-destination',
+  root,
+])
+// npm 10 can print prepare output before its JSON report, even with --ignore-scripts.
+const reportStart = packOutput.lastIndexOf('\n[')
+const packed = JSON.parse(reportStart === -1 ? packOutput : packOutput.slice(reportStart + 1))[0]
 const expected = [
   'LICENSE',
   'README.md',

@@ -6,6 +6,11 @@ permissions:
   contents: read
 jobs:
   governance:
+    strategy:
+      matrix:
+        toolchain:
+          - { node: '22.13.0', pnpm: '11.13.1' }
+          - { node: '24', pnpm: '12' }
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,11 +18,10 @@ jobs:
           fetch-depth: 0
       - uses: pnpm/action-setup@v6
         with:
-          version: '^12.10.1'
+          version: ${{ matrix.toolchain.pnpm }}
       - uses: actions/setup-node@v4
         with:
-          node-version-file: .node-version
-          check-latest: true
+          node-version: ${{ matrix.toolchain.node }}
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm format:check
@@ -33,16 +37,18 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         preset: [frontend, backend, fullstack]
+        toolchain:
+          - { node: '22.13.0', pnpm: '11.13.1' }
+          - { node: '24', pnpm: '12' }
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v6
         with:
-          version: '^12.10.1'
+          version: ${{ matrix.toolchain.pnpm }}
       - uses: actions/setup-node@v4
         with:
-          node-version-file: .node-version
-          check-latest: true
+          node-version: ${{ matrix.toolchain.node }}
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm package:verify -- --preset ${{ matrix.preset }}

@@ -4,6 +4,8 @@
 
 活动日志按变更类型/年/月组织；完成后移动到 archive/ai-logs 并更新[归档索引](../archive/README.md)。
 
+- [兼容环境与 npm 发布](build/2026/10/2026-10-08-compatible-environment-release.md)：0.2.0 发布正在验证。
+
 - [依赖升级与构建环境范围](build/2026/10/2026-10-08-dependency-lifecycle.md)：技术验证通过，等待前端人工验收。
 
 - [CLI 与 npm 发布](../archive/ai-logs/feat/2026/10/2026-10-08-cli-npm-release.md)：0.1.0 公开发布、三种预设消费和 Windows/Linux CI 均通过，已完成归档。

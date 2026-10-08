@@ -1,6 +1,6 @@
 {
   "name": "create-coaiforge",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Create an independent Vue, NestJS or fullstack project with human-AI collaboration governance",
   "type": "module",
   "license": "MIT",
@@ -34,16 +34,9 @@
     "ai",
     "agents"
   ],
-  "devEngines": {
-    "packageManager": {
-      "name": "pnpm",
-      "version": "^12.10.1",
-      "onFail": "warn"
-    }
-  },
   "engines": {
-    "node": ">=24.21.0",
-    "pnpm": "^12.10.1"
+    "node": "^22.13.0 || >=24.0.0",
+    "pnpm": ">=11.13.1 <13"
   },
   "scripts": {
     "prepare": "node scripts/git/install-hooks.mjs",
@@ -72,7 +65,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@types/node": "^24.19.1",
+    "@types/node": "^22.20.5",
     "eslint": "^10.12.0",
     "eslint-plugin-vue": "^10.11.1",
     "typescript": "^6.0.3",

@@ -12,6 +12,8 @@ owner: project maintainers
 
 维护者明确指定发布包名 create-coaiforge，并授权完成 CLI 和 npm 发布。首次版本 0.1.0 已于 2026-10-08 公开发布，latest 指向该版本；仓库和产品名仍为 CoAIForge。三种预设均已通过公开 npm 包实际创建，Windows/Linux 打包验证通过；P1 前端人工验收保持既有证据边界。完整证据见[发布验证](../reference/p2-release-validation.md)。
 
+用户进一步授权发布 0.2.0：包含当前依赖范围、兼容环境要求与已提交的前端动画介绍页。环境不追新，只接受经验证的兼容范围。发布准备和本轮验证见[0.2.0 记录](../reference/v0.2.0-release-validation.md)；实际发布前不声明 registry 已更新。前端人工验收计划仍保留。
+
 ## 入口、依赖与数据流
 
 源码模板的后续依赖调整见[升级策略](dependency-lifecycle.md)。已发布 0.1.0 的 tarball 与历史发布验证保持发布时事实；2026-10-08 的依赖升级尚未公开发布。

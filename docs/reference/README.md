@@ -1,5 +1,7 @@
 # 参考资料
 
+- [0.2.1 npm 发布验证](v0.2.1-release-validation.md)：pnpm 无上限声明、实际发布与公开创建证据。
+
 - [环境兼容验证](toolchain-compatibility-validation.md)：Node 20 / pnpm 10 下界、依赖选择与实际验证。
 
 - [0.2.0 npm 发布验证](v0.2.0-release-validation.md)：兼容环境、产物验证与公开消费证据。

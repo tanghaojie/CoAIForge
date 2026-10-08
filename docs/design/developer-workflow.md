@@ -8,7 +8,7 @@ owner: project maintainers
 
 # 开发与启动流程
 
-Node 使用 ^20.19.0 || ^22.13.0 || >=24.0.0 范围，推荐 22；pnpm 使用 >=10.26.0 <13。已有兼容环境即可，无需最新补丁或自动切换包管理器。直接依赖使用兼容范围，锁文件记录验证过的依赖图。`pnpm install --frozen-lockfile` 安装，`pnpm prepare` 安装本地 hooks。无独立 Git 根时 prepare 明确跳过，不修改父仓库。
+Node 使用 ^20.19.0 || ^22.13.0 || >=24.0.0 范围，推荐 22；pnpm 使用 >=10.26.0。已有兼容环境即可，无需最新补丁或自动切换包管理器。直接依赖使用兼容范围，锁文件记录验证过的依赖图。`pnpm install --frozen-lockfile` 安装，`pnpm prepare` 安装本地 hooks。无独立 Git 根时 prepare 明确跳过，不修改父仓库。
 
 `pnpm update -r` 更新兼容依赖并刷新锁文件；跨大版本先审查 peer、迁移与构建影响。维护仓库更新模板声明后运行 `pnpm templates:locks` 及 `pnpm package:verify`；生成工程不含模板维护命令，更新后执行本工程的适用检查。详见[升级策略](dependency-lifecycle.md)。
 

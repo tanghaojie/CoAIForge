@@ -10,11 +10,11 @@ owner: project maintainers
 
 ## 目标与边界
 
-维护仓库和三种生成工程允许兼容版本升级，不再以精确直接依赖或固定 Node/pnpm 补丁版本限制长期迭代。环境按实际兼容下界声明，无需特别新的 Node/pnpm。已发布 0.2.0 的范围仍以其发布记录为准；本轮更低的环境下界与 Nest 11 模板在下一次发布后供公开创建使用。不改既有生成工程、应用模块或 HTTP 契约。
+维护仓库和三种生成工程允许兼容版本升级，不再以精确直接依赖或固定 Node/pnpm 补丁版本限制长期迭代。环境按实际兼容下界声明，无需特别新的 Node/pnpm。0.2.1 的 CLI 与模板提供较低环境下界、Nest 11 和 pnpm 无上限声明；历史 0.2.0 以其发布记录为准。不改既有生成工程、应用模块或 HTTP 契约。
 
 ## 环境与版本范围
 
-Node engines 为 ^20.19.0 || ^22.13.0 || >=24.0.0，.node-version 推荐 22，已有兼容环境即可，不要求最新补丁。Node 20.19 是 Vite 8 与 ESLint 10 的共同下界；22 系列下界由 ESLint 10 的 ^22.13.0 决定。pnpm engines 为 >=10.26.0 <13，支持 10/11/12 的兼容版本；10.26 是当前 allowBuilds 配置的首次支持版本。保留无 packageManager、devEngines.packageManager 和 pmOnFail 的行为，不自动下载或切换工具。组合器复制 engines，依赖说明从实际 engines 生成。CI 覆盖 Node 20.19.0 / pnpm 10.26.0、Node 22.13.0 / pnpm 11.13.1 与 Node 24 / pnpm 12，推荐版本与兼容下界分开。
+Node engines 为 ^20.19.0 || ^22.13.0 || >=24.0.0，.node-version 推荐 22，已有兼容环境即可，不要求最新补丁。Node 20.19 是 Vite 8 与 ESLint 10 的共同下界；22 系列下界由 ESLint 10 的 ^22.13.0 决定。pnpm engines 为 >=10.26.0，10.26 是当前 allowBuilds 配置的首次支持版本。用户明确要求去掉 <13，不以未经验证的大版本上限阻止安装；目前实际验证覆盖 10/11/12，未来版本的兼容性仍需执行本工程检查。保留无 packageManager、devEngines.packageManager 和 pmOnFail 的行为，不自动下载或切换工具。组合器复制 engines，依赖说明从实际 engines 生成。CI 覆盖 Node 20.19.0 / pnpm 10.26.0、Node 22.13.0 / pnpm 11.13.1 与 Node 24 / pnpm 12，推荐版本与兼容下界分开。
 
 应用/工具直接依赖继续使用 ^兼容版本范围；workspace:* 保持内部契约链接。TypeScript 7.0.2 超出 typescript-eslint 8.71.1 的 >=4.8.4 <6.1.0 peer 范围，因此使用兼容版本 ^6.0.3。@types/node 对齐最低支持的 Node 20，避免声明较新运行时才提供的 API。
 

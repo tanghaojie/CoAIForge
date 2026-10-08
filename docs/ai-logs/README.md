@@ -1,5 +1,7 @@
 # AI 协作记录
 
+- [去掉 pnpm 上限并发布 0.2.1](build/2026/10/2026-10-08-v0.2.1-release.md)：开放 pnpm 声明、发布验证与公开消费证据。
+
 - [扩大环境兼容范围](../archive/ai-logs/build/2026/10/2026-10-08-toolchain-compatibility.md)：Node 20 / pnpm 10 与较新环境验证通过，完成归档。
 
 - [0.2.0 发布归档复核](../archive/ai-logs/docs/2026/10/2026-10-08-release-archive-review.md)：现行事实与历史边界已复核，完成归档。

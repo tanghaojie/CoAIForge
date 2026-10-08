@@ -1,6 +1,6 @@
 {
   "name": "create-coaiforge",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Create an independent Vue, NestJS or fullstack project with human-AI collaboration governance",
   "type": "module",
   "license": "MIT",
@@ -36,7 +36,7 @@
   ],
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || >=24.0.0",
-    "pnpm": ">=10.26.0 <13"
+    "pnpm": ">=10.26.0"
   },
   "scripts": {
     "prepare": "node scripts/git/install-hooks.mjs",

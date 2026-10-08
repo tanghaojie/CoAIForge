@@ -16,6 +16,8 @@ owner: project maintainers
 
 ## 入口、依赖与数据流
 
+用户明确授权发布 0.2.1，携带 Node 20、Nest 11 与 pnpm >=10.26.0 的无上限声明。当前为待验证发布候选；发布时使用引用已提交源码的实际已验证 tarball，版本、来源 SHA、integrity 与公开消费结果进入独立验证记录。
+
 初次源码依赖调整已随 0.2.0 公开发布。随后按用户要求扩大到 Node 20 / pnpm 10 的源码调整见[升级策略](dependency-lifecycle.md)和[兼容验证](../reference/toolchain-compatibility-validation.md)，尚未发布。已发布 0.1.0、0.2.0 的 tarball 与历史验证保持发布时事实；本地相同版本号的测试 tarball 不能作为 registry 已更新的证据。
 
 根包提供 bin/create-coaiforge.mjs，入口只调用 scripts/cli/create-project.mjs 的 runCli。CLI 是模板维护工具，不是生成应用的业务模块；公共边界沿用 scripts/templates/compose.mjs 的 compose。发布资源构建入口为 scripts/release/build.mjs 的 buildBundle。CLI 依赖组合器和 Node 内建交互/Git/文件接口，不引入交互框架；Prettier 为组合器运行时依赖，生成工程仍将其作为开发依赖。

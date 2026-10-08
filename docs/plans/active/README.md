@@ -1,5 +1,7 @@
 # 活动计划
 
+- [去掉 pnpm 上限并发布 0.2.1](2026-10-08-v0.2.1-release.md)：发布候选准备与实际 npm 产物验证。
+
 - [扩大环境兼容范围](../../archive/plans/2026-10-08-toolchain-compatibility.md)：Node 20 / pnpm 10 与较新环境验证通过，完成归档。
 
 - [0.2.0 发布文档归档复核](../../archive/plans/2026-10-08-release-archive-review.md)：现行设计与发布证据已复核，完成归档；按真实提交登记基线。

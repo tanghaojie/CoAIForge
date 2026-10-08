@@ -1,5 +1,7 @@
 # AI 协作记录
 
+- [pnpm 原生启动器修复](../archive/ai-logs/fix/2026/10/2026-10-08-pnpm-native-launcher.md)及[收尾归档复核](../archive/ai-logs/docs/2026/10/2026-10-08-launcher-archive-review.md)：本地验证通过并归档，Linux CI 待远端确认。
+
 - [去掉 pnpm 上限并发布 0.2.1](../archive/ai-logs/build/2026/10/2026-10-08-v0.2.1-release.md)：已公开发布，开放 pnpm 声明、产物及三种公开创建验证通过，完成归档。
 
 - [扩大环境兼容范围](../archive/ai-logs/build/2026/10/2026-10-08-toolchain-compatibility.md)：Node 20 / pnpm 10 与较新环境验证通过，完成归档。

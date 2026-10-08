@@ -1,5 +1,7 @@
 # 活动计划
 
+- [pnpm 原生启动器修复](../../archive/plans/2026-10-08-pnpm-native-launcher.md)及[收尾归档复核](../../archive/plans/2026-10-08-launcher-archive-review.md)：本地验证通过并归档，Linux CI 待远端确认。
+
 - [去掉 pnpm 上限并发布 0.2.1](../../archive/plans/2026-10-08-v0.2.1-release.md)：已发布，实际产物与三种预设公开创建验证通过，完成归档。
 
 - [扩大环境兼容范围](../../archive/plans/2026-10-08-toolchain-compatibility.md)：Node 20 / pnpm 10 与较新环境验证通过，完成归档。

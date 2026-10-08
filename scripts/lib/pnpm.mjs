@@ -4,8 +4,9 @@ import { dirname, join } from 'node:path'
 
 function launcher() {
   if (process.env.npm_execpath && existsSync(process.env.npm_execpath)) {
-    const path = process.env.npm_execpath
-    return path.endsWith('.exe') ? [path, []] : [process.execPath, [path]]
+    const path = realpathSync(process.env.npm_execpath)
+    if (/\.[cm]?js$/i.test(path)) return [process.execPath, [path]]
+    if (process.platform !== 'win32' || /\.exe$/i.test(path)) return [path, []]
   }
   const paths = execFileSync(process.platform === 'win32' ? 'where.exe' : 'which', ['pnpm'], {
     encoding: 'utf8',
@@ -13,9 +14,9 @@ function launcher() {
     .trim()
     .split(/\r?\n/)
   for (const path of paths) {
-    if (path.endsWith('.exe')) return [path, []]
     const real = realpathSync(path)
-    if (/\.[cm]?js$/.test(real)) return [process.execPath, [real]]
+    if (/\.[cm]?js$/i.test(real)) return [process.execPath, [real]]
+    if (process.platform !== 'win32' || /\.exe$/i.test(real)) return [real, []]
     for (const file of ['pnpm.mjs', 'pnpm.cjs']) {
       const candidate = join(dirname(path), 'node_modules/pnpm/bin', file)
       if (existsSync(candidate)) return [process.execPath, [candidate]]

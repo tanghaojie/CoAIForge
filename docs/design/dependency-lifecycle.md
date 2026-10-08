@@ -28,6 +28,8 @@ pnpm-workspace.yaml 集中配置 engineStrict: true、savePrefix: '^'、minimumR
 
 ## 数据流与失败模式
 
+pnpm 启动器按入口类型执行：解析真实路径后，.js/.mjs/.cjs 入口交给当前 Node；Windows .exe 与 Unix 原生程序或可执行脚本直接启动。npm_execpath 与 PATH 发现均遵守这一规则，不能把没有 .exe 后缀的 Linux ELF 或 macOS 原生程序交给 Node。Windows 命令 shim 保留查找 pnpm JavaScript 入口的兼容路径。回归验证覆盖 JavaScript、原生入口、PATH 发现以及子进程参数、工作目录和失败传播。
+
 根环境/工具依赖与模板应用依赖进入组合器，产出 package.json、workspace 设置、依赖许可表与预设锁文件，再进入发布快照。pnpm 12 可能改变启动入口和锁文件格式；验证脚本必须支持原生 exe。依赖 peer 冲突、TypeScript 迁移、构建失败或 manifest/锁文件失配均阻止交付，不通过关闭检查掩盖问题。
 
 ## 验证与证据

@@ -31,7 +31,16 @@ export default [
   },
   {
     files: ['**/*.vue'],
-    languageOptions: { parser: vueParser, parserOptions: { parser: tseslint.parser } },
+    languageOptions: {
+      parser: vueParser,
+      parserOptions: { parser: tseslint.parser },
+      globals: {
+        window: 'readonly',
+        HTMLElement: 'readonly',
+        ResizeObserver: 'readonly',
+        MediaQueryList: 'readonly',
+      },
+    },
   },
   {
     files: ['**/*.cjs'],

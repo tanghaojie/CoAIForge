@@ -1,5 +1,7 @@
 # AI 协作记录
 
+- [前端动画介绍](feat/2026/10/2026-10-08-frontend-introduction.md)：共享动画模块技术检查通过，人工验收待维护者。
+
 活动日志按变更类型/年/月组织；完成后移动到 archive/ai-logs 并更新[归档索引](../archive/README.md)。
 
 - [依赖升级与构建环境范围](build/2026/10/2026-10-08-dependency-lifecycle.md)：技术验证通过，等待前端人工验收。

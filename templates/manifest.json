@@ -29,9 +29,13 @@
     "frontend": {
       "layers": ["base", "frontend"],
       "workspaces": ["apps/frontend"],
+      "overrides": ["docs/design/README.md"]
+    },
+    "backend": {
+      "layers": ["base", "backend"],
+      "workspaces": ["apps/backend"],
       "overrides": []
     },
-    "backend": { "layers": ["base", "backend"], "workspaces": ["apps/backend"], "overrides": [] },
     "fullstack": {
       "layers": ["base", "frontend", "backend", "fullstack"],
       "workspaces": ["apps/frontend", "apps/backend", "packages/api-contract"],

@@ -16,7 +16,7 @@ CoAIForge 是独立协作启动模板维护仓库。P1 已完成：Windows 本�
 
 公共规则与治理脚本只维护一份：根 AGENTS.md、docs 中的公共现行规范与模板、scripts 下的治理实现。组合清单显式选择这些文件进入输出。templates/base 提供公共配置，templates/frontend 和 templates/backend 提供空应用，templates/fullstack 补充唯一 health 示例。JSON 配置按清单合并；覆盖文件必须显式登记，禁止静默覆盖。
 
-输出预设为 frontend、backend、fullstack。统一 pnpm workspace；单选不生成未选 workspace 或空能力目录。全栈含 packages/api-contract 的 Zod Schema、Nest/Fastify GET /health 及 Vue 状态显示；空后端没有默认业务路由。
+输出预设为 frontend、backend、fullstack。统一 pnpm workspace；单选不生成未选 workspace 或空能力目录。全栈含 packages/api-contract 的 Zod Schema、Nest/Fastify GET /health 及 Vue 状态显示；空后端没有默认业务路由。前端启动 UI 使用共享 introduction 模块展示人机协作、合体构建与主要目录，全栈通过插槽保留 health；详见[前端动画介绍](frontend-introduction.md)。
 
 P1 提供维护者组合工具和三套验证过的锁文件。P2 增加 [create-coaiforge CLI 与 npm 发布](cli-and-npm-release.md)，不迁移 Geo 或公众号编辑器。创建工具不得覆盖已有项目。项目名与包作用域参数化；模板清单记录模板版本、预设与参数，直接组合时 CLI 版本为空，通过 CLI 创建时记录实际发布版本与快照来源提交。
 

@@ -18,6 +18,12 @@
         "packages/api-contract/src/modules/health/health.schema.ts"
       ],
       "dependencies": []
+    },
+    {
+      "name": "introduction",
+      "design": "docs/design/modules/introduction.md",
+      "publicFiles": ["apps/frontend/src/modules/introduction/introduction.vue"],
+      "dependencies": []
     }
   ]
 }

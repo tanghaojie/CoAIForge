@@ -1,5 +1,7 @@
 # AI 协作记录
 
+- [0.2.2 npm 发布](../archive/ai-logs/build/2026/10/2026-10-08-v0.2.2-release.md)：实际产物、registry 完整性与三种公开创建通过，完成归档。
+
 - [收敛 Node 运行时范围](../archive/ai-logs/build/2026/10/2026-10-08-node22-runtime.md)：依赖与锁文件保持不变，根与三种输出检查通过，完成归档。
 
 - [根目录工具收拢](../archive/ai-logs/refactor/2026/10/2026-10-08-project-layout.md)：三种实际 tarball 输出、hooks 与命令入口验证通过，完成归档。

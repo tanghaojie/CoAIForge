@@ -1,5 +1,7 @@
 # 参考资料
 
+- [0.2.2 npm 发布验证](v0.2.2-release-validation.md)：工具布局、Node 要求与实际产物/公开消费证据。
+
 - [工具收拢验证](project-layout-validation.md)：三种实际 tarball 输出、hooks 与 npm 命令入口验证。
 
 - [0.2.1 npm 发布验证](v0.2.1-release-validation.md)：pnpm 无上限声明、实际发布与公开创建证据。

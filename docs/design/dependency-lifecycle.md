@@ -38,4 +38,4 @@ Node 20 的测试运行器不展开 scripts/**/*.test.mjs 这类 glob 参数，�
 
 执行维护仓库格式、Lint、治理测试、文档/模块/归档检查，刷新根与三套锁文件并验证实际 npm tarball 的 frontend/backend/fullstack 安装、格式、Lint、类型、构建及后端/契约测试。前端不运行浏览器或组件自动化；升级后的浏览器功能由维护者人工验收。Linux CI 已更新，但本轮仅将实际运行的平台登记为通过。
 
-0.2.1 已公开发布，实际 tarball 的三种输出和 Node 20 下公开包创建验证通过，registry 完整性一致；发布证据见维护仓库 docs/reference/v0.2.1-release-validation.md。初次升级证据见维护仓库 docs/reference/dependency-upgrade-validation.md；此前扩大环境范围见维护仓库 docs/reference/toolchain-compatibility-validation.md。当前源码收敛 Node 范围的根检查与三种 CLI 输出核对通过，依赖和锁文件不变；尚未公开发布，远端 CI 待运行。生成工程不携带维护历史，环境说明由组合器从实际 engines 生成。锁文件刷新和两类模板验证入口显式使用 --strict-peer-dependencies，peer 失配不能被默默接受。
+0.2.1 已公开发布，实际 tarball 的三种输出和 Node 20 下公开包创建验证通过，registry 完整性一致；发布证据见维护仓库 docs/reference/v0.2.1-release-validation.md。初次升级证据见维护仓库 docs/reference/dependency-upgrade-validation.md；此前扩大环境范围见维护仓库 docs/reference/toolchain-compatibility-validation.md。0.2.2 产物包含 scripts 布局与当前 Node 范围，依赖和锁文件不变；实际发布结果以维护仓库 docs/reference/v0.2.2-release-validation.md 为准，远端 CI 单独核验。生成工程不携带维护历史，环境说明由组合器从实际 engines 生成。锁文件刷新和两类模板验证入口显式使用 --strict-peer-dependencies，peer 失配不能被默默接受。

@@ -12,7 +12,7 @@
 
 当前源码及其新生成工程支持 22.13 起的 22 系列，以及 24 或更新版本；推荐 Node 22。pnpm 支持 >=10.26.0。直接依赖采用兼容版本范围，锁文件记录验证过的依赖组合。
 
-已公开发布的 0.2.1 包含 Node 20 / pnpm 10 兼容环境、开放 pnpm 上限的版本声明与前端动画介绍页。本轮收敛 Node 范围尚未公开发布，下面的 npm 命令仍消费已发布版本。
+0.2.2 将 Git hooks、模块注册表和 CLI 收拢到 scripts，并要求 Node ^22.13.0 || >=24.0.0；保留现有依赖及 pnpm >=10.26.0。已发布的 0.2.1 仍按发布时布局和 Node 20 范围使用；已有项目不会自动迁移。
 
 历史版本 0.2.0 要求 Node ^22.13.0 || >=24.0.0、pnpm >=11.13.1 <13。
 
@@ -40,7 +40,7 @@ pnpm dev:frontend
 
 ## 维护模板与发布
 
-当前源码已将 hooks、模块注册表及 CLI 入口收拢到 scripts，详见[工程工具布局](docs/design/project-layout.md)。此布局尚未公开发布，npm 0.2.1 和已有生成项目保留发布时布局；移位后的维护仓库运行 pnpm prepare 更新本地 hooks。
+hooks、模块注册表及 CLI 入口位于 scripts，详见[工程工具布局](docs/design/project-layout.md)。旧版本和已有生成项目保留原布局；显式迁移后运行 pnpm prepare 更新本地 hooks。
 
 源码维护使用上述兼容环境，不要求最新补丁，也不自动下载指定 pnpm。安装后运行 `pnpm test` 验证治理与 CLI，`pnpm package:verify` 从实际 npm tarball 验证三种输出。
 

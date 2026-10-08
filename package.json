@@ -1,6 +1,6 @@
 {
   "name": "create-coaiforge",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Create an independent Vue, NestJS or fullstack project with human-AI collaboration governance",
   "type": "module",
   "license": "MIT",

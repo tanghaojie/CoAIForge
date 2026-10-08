@@ -29,3 +29,5 @@ owner: project maintainers
 源码提交 d07a9fcac33cbc1d40e57ab2c9de46cfaa8c80f9 已核验 AI trailer。最终三种 tarball 输出全部通过，使用同一产物公开发布 0.2.0；registry latest、bin、环境、运行时依赖和完整性一致。维护者完成官方账号认证，npm 处理完成后才声明公开可用。Node 22.13.0 下公开包三种实际创建检查全部通过，见[发布验证](../../reference/v0.2.0-release-validation.md)。
 
 发布后的变更仅同步文档与归档。完成计划数达到阈值，由[专门文档复核](2026-10-08-release-archive-review.md)将真实已提交复核内容登记为基线后执行最终归档 CI。原有两份前端人工验收计划继续保留。
+
+发布记录与复核提交为 e6c43b6a22cfb46b8a4af629a45a65bf4b8fa844，已据此登记真实归档基线，最终 docs:archive:check:ci 为 NOT_DUE。发布收尾的格式、Lint、29 项测试、文档、模块、提交规范和 diff 检查通过；本发布任务的技术与公开消费退出条件全部满足。

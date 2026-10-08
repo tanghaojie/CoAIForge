@@ -29,3 +29,5 @@ owner: project maintainers
 收尾提交与台账需要两步：先提交已完成并归档的复核内容，再对干净工作区的真实完整 SHA 执行 docs:archive:complete；台账变更经最终 CI 通过后另行提交。
 
 复核阶段实际结果：格式、Lint、29 项测试、文档结构、模块、提交规范与 git diff --check 均通过。活动复核审计为 IN_PROGRESS；按协议先提交本计划的完成归档内容，再登记真实 SHA，不能在提交复核内容前伪造 NOT_DUE。
+
+收尾已完成：复核内容提交 e6c43b6a22cfb46b8a4af629a45a65bf4b8fa844，AI trailer 已核验；在干净工作区登记该真实 SHA 为基线。2026-10-08T04:42:42.353Z 台账记录覆盖当前 3 份有效 ADR 和 4 份完成计划，docs:archive:check:ci 输出 NOT_DUE，无活动复核、无待处理触发。台账及本收尾证据由后续 docs(governance) 提交保存。

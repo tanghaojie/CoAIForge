@@ -1,5 +1,7 @@
 # 依赖升级验证
 
+本页保留初次依赖升级的环境与验证事实。后续用户要求环境兼容即可，现行 Node/pnpm 范围、锁文件格式和 0.2.0 公开发布证据以[兼容环境发布验证](v0.2.0-release-validation.md)及[依赖策略](../design/dependency-lifecycle.md)为准。
+
 2026-10-08（Asia/Singapore），本地 Windows。使用项目忽略目录中的官方 Node v24.21.0（SHA256 校验通过）和 pnpm 12.10.1 执行验证。系统级工具不作为本轮升级验证环境。
 
 | 能力                              | 升级后的声明                                             |

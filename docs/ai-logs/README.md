@@ -1,10 +1,12 @@
 # AI 协作记录
 
+- [0.2.0 发布归档复核](../archive/ai-logs/docs/2026/10/2026-10-08-release-archive-review.md)：现行事实与历史边界已复核，完成归档。
+
 - [前端动画介绍](feat/2026/10/2026-10-08-frontend-introduction.md)：共享动画模块技术检查通过，人工验收待维护者。
 
 活动日志按变更类型/年/月组织；完成后移动到 archive/ai-logs 并更新[归档索引](../archive/README.md)。
 
-- [兼容环境与 npm 发布](build/2026/10/2026-10-08-compatible-environment-release.md)：0.2.0 发布正在验证。
+- [兼容环境与 npm 发布](../archive/ai-logs/build/2026/10/2026-10-08-compatible-environment-release.md)：0.2.0 已公开发布并通过三种预设实际创建验证，已归档。
 
 - [依赖升级与构建环境范围](build/2026/10/2026-10-08-dependency-lifecycle.md)：技术验证通过，等待前端人工验收。
 

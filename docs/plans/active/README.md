@@ -1,6 +1,8 @@
 # 活动计划
 
-- [兼容环境与 0.2.0 npm 发布](2026-10-08-compatible-environment-release.md)：调整 Node/pnpm 兼容要求并验证发布产物。
+- [0.2.0 发布文档归档复核](../../archive/plans/2026-10-08-release-archive-review.md)：现行设计与发布证据已复核，完成归档；按真实提交登记基线。
+
+- [兼容环境与 0.2.0 npm 发布](../../archive/plans/2026-10-08-compatible-environment-release.md)：已公开发布，三种预设公开创建验证通过，完成归档。
 
 - [前端动画介绍](2026-10-08-frontend-introduction.md)：技术检查已通过，滚动动画与浏览器功能待人工验收。
 

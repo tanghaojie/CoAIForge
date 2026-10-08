@@ -10,13 +10,13 @@ owner: project maintainers
 
 ## 目标与状态
 
-维护者明确指定发布包名 create-coaiforge，并授权完成 CLI 和 npm 发布。首次版本 0.1.0 已于 2026-10-08 公开发布，latest 指向该版本；仓库和产品名仍为 CoAIForge。三种预设均已通过公开 npm 包实际创建，Windows/Linux 打包验证通过；P1 前端人工验收保持既有证据边界。完整证据见[发布验证](../reference/p2-release-validation.md)。
+维护者明确指定发布包名 create-coaiforge，并授权完成 CLI 和 npm 发布。首次版本 0.1.0 已于 2026-10-08 公开发布；仓库和产品名仍为 CoAIForge。首次发布的三种预设公开消费和 Windows/Linux 打包验证证据见[0.1.0 发布验证](../reference/p2-release-validation.md)。
 
-用户进一步授权发布 0.2.0：包含当前依赖范围、兼容环境要求与已提交的前端动画介绍页。环境不追新，只接受经验证的兼容范围。发布准备和本轮验证见[0.2.0 记录](../reference/v0.2.0-release-validation.md)；实际发布前不声明 registry 已更新。前端人工验收计划仍保留。
+用户进一步授权的 0.2.0 已于 2026-10-08 公开发布，latest 指向 0.2.0：包含当前依赖范围、兼容环境要求与已提交的前端动画介绍页。环境不追新，只接受经验证的兼容范围。发布快照来源为 d07a9fcac33cbc1d40e57ab2c9de46cfaa8c80f9，registry 完整性与已验证 tarball 一致，见[0.2.0 记录](../reference/v0.2.0-release-validation.md)。前端人工验收计划仍保留。
 
 ## 入口、依赖与数据流
 
-源码模板的后续依赖调整见[升级策略](dependency-lifecycle.md)。已发布 0.1.0 的 tarball 与历史发布验证保持发布时事实；2026-10-08 的依赖升级尚未公开发布。
+源码模板的依赖调整见[升级策略](dependency-lifecycle.md)，随 0.2.0 公开发布。已发布 0.1.0 的 tarball 与历史发布验证保持发布时事实。
 
 根包提供 bin/create-coaiforge.mjs，入口只调用 scripts/cli/create-project.mjs 的 runCli。CLI 是模板维护工具，不是生成应用的业务模块；公共边界沿用 scripts/templates/compose.mjs 的 compose。发布资源构建入口为 scripts/release/build.mjs 的 buildBundle。CLI 依赖组合器和 Node 内建交互/Git/文件接口，不引入交互框架；Prettier 为组合器运行时依赖，生成工程仍将其作为开发依赖。
 
@@ -36,7 +36,7 @@ CLI → 已打包的模板快照 → 临时资源目录 → 现有 compose → �
 
 ## 验证与失败模式
 
-CLI 测试覆盖三种选择、交互参数、无终端缺参、非法参数、取消、已有目录、Git 初始化且无首提交、--no-git 以及快照版本来源。发布验证覆盖 tarball 文件白名单、隐藏模板文件、隔离安装及三种生成结果适用的格式/Lint/类型/模块/文档/构建/治理与后端契约测试。前端不新增或运行浏览器自动化；模板界面未修改，P1 人类验收不扩展为新功能验收。运行仓库格式、Lint、治理测试、文档、模块和归档 CI 门禁；CI 增加 Windows/Linux 的打包隔离验证。
+CLI 测试覆盖三种选择、交互参数、无终端缺参、非法参数、取消、已有目录、Git 初始化且无首提交、--no-git 以及快照版本来源。发布验证覆盖 tarball 文件白名单、隐藏模板文件、隔离安装及三种生成结果适用的格式/Lint/类型/模块/文档/构建/治理与后端契约测试。前端不新增或运行浏览器自动化；0.2.0 包含已提交的介绍页，P1 人类验收不扩展为新功能验收。运行仓库格式、Lint、治理测试、文档、模块和归档 CI 门禁；CI 增加 Windows/Linux 的打包隔离验证。
 
 ## 关联
 

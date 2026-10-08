@@ -10,7 +10,7 @@ owner: project maintainers
 
 ## 目标、当前事实与非目标
 
-用户要求修改 CoAIForge 前端 UI，以动画展示 AI + 人、合体构建和项目目录。frontend 和 fullstack 启动页已共用 introduction 动画介绍模块；fullstack 通过 service 插槽保留 health 状态和刷新。不增加动画依赖，不修改后端、health 契约、CLI 或发布版本。本轮不发布 npm；已有安装包不会因此自动更新。
+用户要求修改 CoAIForge 前端 UI，以动画展示 AI + 人、合体构建和项目目录。frontend 和 fullstack 启动页已共用 introduction 动画介绍模块；fullstack 通过 service 插槽保留 health 状态和刷新。不增加动画依赖，不修改后端或 health 契约。该 UI 实施完成后，维护者另行授权的 0.2.0 发布已携带当前介绍页，见[发布验证](../reference/v0.2.0-release-validation.md)；既有生成工程不会自动更新。
 
 ## 职责、边界与公共文件
 

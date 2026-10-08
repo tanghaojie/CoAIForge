@@ -2,7 +2,7 @@
 title: 单项目文档治理与归档审计
 status: accepted
 created: 2026-10-07
-updated: 2026-10-07
+updated: 2026-10-08
 owner: project maintainers
 ---
 
@@ -29,3 +29,5 @@ NOT_DUE 无需复核；DUE 需创建复核计划；IN_PROGRESS 表示已有活�
 ## 收尾门禁
 
 任务前 pnpm docs:archive:check，最终 pnpm docs:archive:check:ci。损坏配置、过期、未完成复核或未建基线必须失败。bootstrap 不用于已有历史的 CI。阈值外置且可调整；测试验证各状态和边界。
+
+2026-10-08 的 0.2.0 发布收尾达到 3 个完成计划阈值，执行专门归档复核。复核依据当前发布源码、实际验证、公开版本和 Git 历史，同步发布设计与索引；初次依赖升级的历史环境保留并指向现行策略。两份待人工前端验收计划仍保持 pending_human_acceptance。复核内容提交后登记真实基线，不把未提交变更、发布授权或账号认证写成人工验收通过。

@@ -12,13 +12,13 @@ owner: project maintainers
 
 维护者明确指定发布包名 create-coaiforge，并授权完成 CLI 和 npm 发布。首次版本 0.1.0 已于 2026-10-08 公开发布；仓库和产品名仍为 CoAIForge。首次发布的三种预设公开消费和 Windows/Linux 打包验证证据见[0.1.0 发布验证](../reference/p2-release-validation.md)。
 
-用户进一步授权的 0.2.0 已于 2026-10-08 公开发布，latest 指向 0.2.0：包含当前依赖范围、兼容环境要求与已提交的前端动画介绍页。环境不追新，只接受经验证的兼容范围。发布快照来源为 d07a9fcac33cbc1d40e57ab2c9de46cfaa8c80f9，registry 完整性与已验证 tarball 一致，见[0.2.0 记录](../reference/v0.2.0-release-validation.md)。前端人工验收计划仍保留。
+用户进一步授权的 0.2.0 已于 2026-10-08 公开发布，发布时 latest 指向 0.2.0：包含当前依赖范围、兼容环境要求与已提交的前端动画介绍页。环境不追新，只接受经验证的兼容范围。发布快照来源为 d07a9fcac33cbc1d40e57ab2c9de46cfaa8c80f9，registry 完整性与已验证 tarball 一致，见[0.2.0 记录](../reference/v0.2.0-release-validation.md)。前端人工验收计划仍保留。
 
 ## 入口、依赖与数据流
 
-用户明确授权发布 0.2.1，携带 Node 20、Nest 11 与 pnpm >=10.26.0 的无上限声明。当前为待验证发布候选；发布时使用引用已提交源码的实际已验证 tarball，版本、来源 SHA、integrity 与公开消费结果进入独立验证记录。
+用户明确授权发布 0.2.1，携带 Node 20、Nest 11 与 pnpm >=10.26.0 的无上限声明。已于 2026-10-08 公开发布，当前 latest 为 0.2.1。使用引用源码提交 99b2a7e2bef1c6aae4111265991668162097dcdd 的实际已验证 tarball，三种输出适用检查和公开创建通过，registry integrity 一致；见[0.2.1 发布验证](../reference/v0.2.1-release-validation.md)。
 
-初次源码依赖调整已随 0.2.0 公开发布。随后按用户要求扩大到 Node 20 / pnpm 10 的源码调整见[升级策略](dependency-lifecycle.md)和[兼容验证](../reference/toolchain-compatibility-validation.md)，尚未发布。已发布 0.1.0、0.2.0 的 tarball 与历史验证保持发布时事实；本地相同版本号的测试 tarball 不能作为 registry 已更新的证据。
+初次源码依赖调整已随 0.2.0 公开发布。随后按用户要求扩大到 Node 20 / pnpm 10 的源码调整见[升级策略](dependency-lifecycle.md)和[兼容验证](../reference/toolchain-compatibility-validation.md)，现随 0.2.1 公开发布。已发布 0.1.0、0.2.0 的 tarball 与历史验证保持发布时事实；本地相同版本号的测试 tarball 不能作为 registry 已更新的证据。
 
 根包提供 bin/create-coaiforge.mjs，入口只调用 scripts/cli/create-project.mjs 的 runCli。CLI 是模板维护工具，不是生成应用的业务模块；公共边界沿用 scripts/templates/compose.mjs 的 compose。发布资源构建入口为 scripts/release/build.mjs 的 buildBundle。CLI 依赖组合器和 Node 内建交互/Git/文件接口，不引入交互框架；Prettier 为组合器运行时依赖，生成工程仍将其作为开发依赖。
 

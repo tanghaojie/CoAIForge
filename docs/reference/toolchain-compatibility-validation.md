@@ -1,5 +1,7 @@
 # 环境兼容范围验证
 
+后续用户去掉 pnpm 上限并发布 0.2.1，实际发布及公开消费见[0.2.1 发布验证](v0.2.1-release-validation.md)。下文保留此前兼容验证执行时的范围与产物。
+
 2026-10-08（Asia/Singapore），Windows。本轮核实与修改仅在 CoAIForge，不修改 Cyber-Sight、已有生成工程或系统工具，不发布 npm。
 
 ## 下界依据

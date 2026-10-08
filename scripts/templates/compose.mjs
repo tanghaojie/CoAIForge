@@ -29,7 +29,15 @@ function merge(base, patch) {
   return result
 }
 
-export async function compose({ target, preset, name, withLock = true, root = projectRoot }) {
+export async function compose({
+  target,
+  preset,
+  name,
+  withLock = true,
+  root = projectRoot,
+  cliVersion = null,
+  sourceCommit: recordedSourceCommit,
+}) {
   const manifest = readJson(join(root, 'templates/manifest.json'))
   const recipe = manifest.presets[preset]
   if (!recipe) throw new Error('Preset must be frontend, backend or fullstack')
@@ -75,11 +83,27 @@ export async function compose({ target, preset, name, withLock = true, root = pr
     packageManager: maintenance.packageManager,
     engines: maintenance.engines,
     scripts: Object.fromEntries(
-      Object.entries(maintenance.scripts).filter(
-        ([key]) => !['template:compose', 'templates:verify'].includes(key),
+      Object.entries(maintenance.scripts).filter(([key]) =>
+        [
+          'prepare',
+          'format',
+          'format:check',
+          'lint',
+          'docs:check',
+          'modules:check',
+          'docs:archive:check',
+          'docs:archive:check:ci',
+          'docs:archive:check:bootstrap',
+          'docs:archive:init',
+          'docs:archive:complete',
+          'commits:check',
+        ].includes(key),
       ),
     ),
-    devDependencies: maintenance.devDependencies,
+    devDependencies: {
+      ...maintenance.devDependencies,
+      prettier: maintenance.dependencies?.prettier ?? maintenance.devDependencies.prettier,
+    },
   }
   packageJson.scripts = {
     ...packageJson.scripts,
@@ -131,15 +155,17 @@ export async function compose({ target, preset, name, withLock = true, root = pr
     'pnpm-workspace.yaml',
     `packages:\n${recipe.workspaces.map((path) => `  - '${path}'`).join('\n')}\n\nallowBuilds:\n  '@nestjs/core': false\n  esbuild: true\n\nminimumReleaseAge: 1440\n`,
   )
-  let sourceCommit = null
-  try {
-    sourceCommit = git(root, ['rev-parse', '--verify', 'HEAD'])
-  } catch {
-    /* No source commit yet */
+  let sourceCommit = recordedSourceCommit ?? null
+  if (recordedSourceCommit === undefined) {
+    try {
+      sourceCommit = git(root, ['rev-parse', '--verify', 'HEAD'])
+    } catch {
+      /* No source commit yet */
+    }
   }
   planned.set(
     '.template-manifest.json',
-    `${JSON.stringify({ schemaVersion: 1, template: 'CoAIForge', templateVersion: maintenance.version, cliVersion: null, sourceCommit, preset, parameters: { projectName: name, packageScope: parameters.PACKAGE_SCOPE }, generatedAt: new Date().toISOString() }, null, 2)}\n`,
+    `${JSON.stringify({ schemaVersion: 1, template: 'CoAIForge', templateVersion: maintenance.version, cliVersion, sourceCommit, preset, parameters: { projectName: name, packageScope: parameters.PACKAGE_SCOPE }, generatedAt: new Date().toISOString() }, null, 2)}\n`,
   )
   if (withLock) {
     const lock = join(root, 'templates/locks', `${preset}.yaml`)

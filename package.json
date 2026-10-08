@@ -1,9 +1,39 @@
 {
-  "name": "coaiforge",
+  "name": "create-coaiforge",
   "version": "0.1.0",
-  "private": true,
+  "description": "Create an independent Vue, NestJS or fullstack project with human-AI collaboration governance",
   "type": "module",
   "license": "MIT",
+  "bin": {
+    "create-coaiforge": "bin/create-coaiforge.mjs"
+  },
+  "files": [
+    "bin/",
+    "scripts/cli/create-project.mjs",
+    "scripts/templates/compose.mjs",
+    "scripts/lib/project.mjs",
+    "dist/template-bundle.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanghaojie/CoAIForge.git"
+  },
+  "homepage": "https://github.com/tanghaojie/CoAIForge#readme",
+  "bugs": {
+    "url": "https://github.com/tanghaojie/CoAIForge/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "create",
+    "scaffold",
+    "vue",
+    "nestjs",
+    "ai",
+    "agents"
+  ],
   "packageManager": "pnpm@11.13.1",
   "engines": {
     "node": ">=24.18.0 <25",
@@ -24,14 +54,20 @@
     "docs:archive:complete": "node scripts/docs/archive-audit.mjs --complete",
     "commits:check": "node scripts/git/check-range.mjs",
     "template:compose": "node scripts/templates/compose.mjs",
-    "templates:verify": "node scripts/templates/verify.mjs"
+    "templates:verify": "node scripts/templates/verify.mjs",
+    "cli": "node bin/create-coaiforge.mjs",
+    "package:build": "node scripts/release/build.mjs",
+    "package:verify": "node scripts/release/verify.mjs",
+    "prepack": "node scripts/release/build.mjs"
+  },
+  "dependencies": {
+    "prettier": "3.9.6"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "@types/node": "24.19.1",
     "eslint": "10.8.0",
     "eslint-plugin-vue": "10.10.0",
-    "prettier": "3.9.6",
     "typescript": "5.9.3",
     "typescript-eslint": "8.65.0",
     "vue-eslint-parser": "10.4.1",

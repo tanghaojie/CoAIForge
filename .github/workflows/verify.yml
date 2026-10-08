@@ -43,4 +43,4 @@ jobs:
           node-version: 24.18.0
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm templates:verify -- --preset ${{ matrix.preset }}
+      - run: pnpm package:verify -- --preset ${{ matrix.preset }}

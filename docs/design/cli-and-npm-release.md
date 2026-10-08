@@ -18,6 +18,8 @@ owner: project maintainers
 
 用户可运行 npm create coaiforge@latest，选择 frontend/backend/fullstack、项目目录和项目名。支持位置目录、--preset、--name、--no-git、--no-interactive、--help 和 --version。无交互终端时必须提供目录和预设，缺失参数立即失败。Ctrl+C 正常取消，不写未确认项目。默认只 git init 并配置本地 hooks，不安装依赖、不创建首提交；--no-git 明确跳过初始化。已有非空目录不可覆盖，非法名称、预设及参数在写入前拒绝；Git 缺失在生成前报告，生成后初始化失败保留工程并报告人工恢复步骤。
 
+服务层关闭 readline 并暂停/释放输入。Windows 原生控制台仍可能保留读句柄，因此 bin 在全部项目操作已结束、stdout/stderr 已刷新后显式结束交互进程；非交互调用使用正常退出码和自然退出，不截断管道输出。
+
 CLI → 已打包的模板快照 → 临时资源目录 → 现有 compose → 独立目标工程 → 可选 Git 初始化。临时资源只包含清单指定的公共规则、治理源码、模板片段与固定锁文件，结束后清理。输出目录参数不作为 shell 字符串拼接；Git 由参数数组调用。
 
 ## npm 包边界与溯源
